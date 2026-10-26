@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="100%" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<text x="270.0" y="52.0" font-size="23.459999999999997" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of handbags per year</text>
+<text x="244.0" y="88.0" font-size="27.599999999999998" fill="#1d4ed8" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Free trade:  P = $600</text>
+<line x1="362.9" y1="140.0" x2="808.6" y2="140.0" stroke="#1d4ed8" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+<circle cx="362.9" cy="140.0" r="7" fill="#1d4ed8"/>
+<circle cx="808.6" cy="140.0" r="7" fill="#1d4ed8"/>
+<line x1="362.9" y1="140.0" x2="362.9" y2="170.0" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="808.6" y1="140.0" x2="808.6" y2="170.0" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="348.2" y="192.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="367.0" y="197.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">s</text>
+<text x="382.9" y="192.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 34,000</text>
+<text x="748.6" y="192.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="767.3" y="197.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">d</text>
+<text x="768.6" y="192.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 38,800</text>
+<line x1="362.9" y1="106.0" x2="808.6" y2="106.0" stroke="#1d4ed8" stroke-width="2.4" marker-start="url(#arws)" marker-end="url(#arwe)"/>
+<text x="585.7" y="94.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Imports = 4,800</text>
+<text x="244.0" y="238.0" font-size="27.599999999999998" fill="#d97706" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">With tariff:  P = $625</text>
+<line x1="469.6" y1="290.0" x2="803.9" y2="290.0" stroke="#d97706" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+<circle cx="469.6" cy="290.0" r="7" fill="#d97706"/>
+<circle cx="803.9" cy="290.0" r="7" fill="#d97706"/>
+<line x1="469.6" y1="290.0" x2="469.6" y2="320.0" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="803.9" y1="290.0" x2="803.9" y2="320.0" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="455.0" y="342.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="473.8" y="347.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">s</text>
+<text x="489.6" y="342.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 35,150</text>
+<text x="743.9" y="342.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="762.7" y="347.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">d</text>
+<text x="763.9" y="342.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 38,750</text>
+<line x1="469.6" y1="256.0" x2="803.9" y2="256.0" stroke="#d97706" stroke-width="2.4" marker-start="url(#arws)" marker-end="url(#arwe)"/>
+<text x="636.8" y="244.0" font-size="26.22" fill="#d97706" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Imports = 3,600</text>
+<text x="40.0" y="430.0" font-size="24.839999999999996" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Reduction in imports = 1,200   →   DWL = ½ × $25 × 1,200 = $15,000</text>
+</svg>

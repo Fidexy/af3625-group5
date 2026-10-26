@@ -6,6 +6,23 @@ are untouched; page-level provenance is recorded below.
 
 ---
 
+## The presentation deliverable
+
+Everything for the group presentation lives in `slides/`:
+
+| File | What it is |
+|---|---|
+| `slides/deck.pdf` | **26 slides, 16:9, vector diagrams, embedded fonts** — this is the file to show in class |
+| `slides/index.html` | the source deck (open it to rehearse: `←` `→`, `S` presenter window, `N` notes, `O` overview) |
+| `slides/speaker-notes.pdf` | **speaker notes, 8 pages A4** — spoken script per slide with timings and handovers |
+| `slides/speaker-notes.md` | the same notes as text, for a laptop or phone |
+| `slides/figs/*.svg` | the diagrams on their own, for reuse in the written assignment |
+
+`slides/README.md` documents the design system, the type scale, the export commands and
+the full answer table. `PRESENTATION_PLAN.md` is the brief the deck was built from.
+
+---
+
 ## Contents
 
 | File | Pages | Why it is here |

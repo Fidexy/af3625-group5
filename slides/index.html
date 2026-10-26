@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate-clean">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AF3625 Group 5 · Q5.1–5.4 · Trade barriers and welfare</title>
+<link rel="stylesheet" href="../../../../.pi/agent/skills/html-ppt/assets/fonts.css">
+<link rel="stylesheet" href="../../../../.pi/agent/skills/html-ppt/assets/base.css">
+<link rel="stylesheet" id="theme-link" href="../../../../.pi/agent/skills/html-ppt/assets/themes/corporate-clean.css">
+<link rel="stylesheet" href="../../../../.pi/agent/skills/html-ppt/assets/animations/animations.css">
+<style>
+/* ══════════════════════════════════════════════════════════════════════════
+   Deck theme — “engineering blueprint”
+   A deck-local theme layer derived from assets/themes/engineering-whiteprint.css
+   and re-anchored on the colour code the assignment fixes for the diagrams, so
+   the slides and the figures share ONE palette:
+
+     navy  #0a2540   ink · axes · domestic curves · world price
+     blue  #1d4ed8   consumer surplus / loss to consumers  (also structural)
+     green #0e9f6e   producer surplus / gain to producers
+     amber #d97706   government revenue / quota rent
+     red   #dc2626   deadweight loss  (hatched in the figures)
+
+   Character: blueprint grid paper, square corners, hairlines, mono for
+   labels / numerals / equations, Inter for prose.                          */
+
+:root{
+  --ink:#0a2540; --ink-2:#3d4d68; --ink-3:#8b98ad;
+  --rule:rgba(10,37,64,.16); --rule-2:rgba(10,37,64,.34);
+  --blue:#1d4ed8; --green:#0e9f6e; --amber:#d97706; --red:#dc2626;
+  --cs:var(--blue); --ps:var(--green); --gov:var(--amber); --dwl:var(--red);
+  /* override the base + whiteprint tokens */
+  --bg:#ffffff; --bg-soft:#f6f9fc; --surface:#ffffff; --surface-2:#f1f5fa;
+  --border:var(--rule); --border-strong:var(--rule-2);
+  --text-1:var(--ink); --text-2:var(--ink-2); --text-3:var(--ink-3);
+  --accent:var(--ink); --accent-2:var(--blue); --accent-3:var(--amber);
+  --accent-ink:#ffffff; --good:var(--green); --warn:var(--amber); --bad:var(--red);
+  --radius:0px; --radius-sm:0px; --radius-lg:0px; --shadow:none;
+  --shadow-lg:0 0 0 1px var(--rule-2);
+  --font-sans:'Inter','Noto Sans SC',sans-serif;
+  --font-display:'Inter','Noto Sans SC',sans-serif;
+  --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;
+}
+body{background:#fff}
+
+/* ── canvas + blueprint grid (per slide, so it survives print pagination) ── */
+.slide{
+  padding:40px 72px 92px;
+  background-color:#fff;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(10,37,64,.05) 0 1px,transparent 1px 40px),
+    repeating-linear-gradient(90deg,rgba(10,37,64,.05) 0 1px,transparent 1px 40px);
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+/* header rule: navy block → blue block → hairline */
+.slide:not(.cover)::before{
+  content:""; position:absolute; left:0; top:0; height:5px; width:100%;
+  background:linear-gradient(90deg,var(--ink) 0 200px,var(--blue) 200px 340px,var(--rule) 340px 100%);
+}
+
+/* ── type ────────────────────────────────────────────────────────────────── */
+.h1,h1.h1{font-size:68px;line-height:1.04;font-weight:800;letter-spacing:-.032em;margin:0 0 12px}
+.h2,h2.h2{font-size:58px;line-height:1.05;font-weight:800;letter-spacing:-.032em;margin:0 0 8px}
+.h3,.h3{font-size:36px;line-height:1.2;font-weight:700;letter-spacing:-.012em}
+.h4,.h4{font-size:26px;font-weight:700;letter-spacing:-.01em}
+.lede{font-size:30px;line-height:1.45;color:var(--ink-2)}
+.kicker{
+  display:block; font-family:var(--font-mono); font-size:16px; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--blue); margin-bottom:9px}
+.kicker::before{
+  content:""; display:inline-block; width:11px; height:11px; background:var(--blue);
+  margin-right:12px; vertical-align:1px}
+.mono{font-family:var(--font-mono)}
+.mono-sm{font-family:var(--font-mono); font-size:.94em}
+.dim{color:var(--ink-2)}
+.dim2,.note-inline{color:var(--ink-2);font-size:23px}
+
+/* ── chrome: section footer, visible in print too ───────────────────────── */
+.slidefoot{
+  position:absolute; left:72px; right:72px; bottom:26px; display:flex;
+  justify-content:space-between; align-items:baseline;
+  font-family:var(--font-mono); font-size:15px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3)}
+.slidefoot::before{
+  content:""; position:absolute; left:0; right:0; top:-15px; height:1px; background:var(--rule)}
+
+/* ── cover ──────────────────────────────────────────────────────────────── */
+.slide.cover{
+  background:#0a2540; background-image:none; justify-content:center;
+  padding:0 96px; color:#fff}
+.slide.cover::before{display:none}
+.slide.cover .kicker{color:#8fb4ff}
+.slide.cover .kicker::before{background:#8fb4ff}
+.slide.cover h1{
+  color:#fff; font-size:104px; line-height:.98; font-weight:800;
+  letter-spacing:-.038em; margin:0 0 26px; max-width:15ch}
+.slide.cover .lede{color:rgba(255,255,255,.76); max-width:56ch}
+.slide.cover .rule{background:var(--blue); height:6px; width:104px; margin:30px 0 0}
+.cover-meta{display:grid; grid-template-columns:repeat(4,auto); gap:64px; margin-top:52px; justify-content:start}
+.cover-meta .k{
+  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:rgba(255,255,255,.5)}
+.cover-meta .v{font-size:20px; font-weight:600; color:#fff; margin-top:8px}
+.slide.cover .slidefoot{color:rgba(255,255,255,.45)}
+.slide.cover .slidefoot::before{background:rgba(255,255,255,.18)}
+.cover-mark{
+  position:absolute; right:-30px; top:50%; transform:translateY(-50%);
+  width:860px; opacity:.5; pointer-events:none}
+
+/* ── section openers (class name must not collide with base.css .divider) ───────────────────────────────────────────────────── */
+.slide.secopen{justify-content:center}
+.secnum{
+  position:absolute; right:60px; top:26px; font-family:var(--font-mono);
+  font-size:250px; font-weight:700; line-height:.86; letter-spacing:-.07em;
+  color:rgba(10,37,64,.075); pointer-events:none}
+.slide.secopen h2{font-size:64px;margin:0 0 12px}
+.secopen-parts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.secopen-parts span{
+  font-family:var(--font-mono); font-size:18px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-2);
+  border:1px solid var(--rule-2); padding:6px 13px}
+
+/* ── section openers: the question, as set ──────────────────────────────── */
+.qcard{position:relative;z-index:1;background:#fff;border:1px solid var(--rule-2);
+  border-left:6px solid var(--ink);padding:40px 34px 26px;max-width:1640px;margin-top:16px}
+.qtag{position:absolute;left:0;top:0;font-family:var(--font-mono);font-size:14px;
+  letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--ink);padding:5px 13px}
+.qscenario{font-size:30px;line-height:1.45;color:var(--ink);margin:4px 0 0}
+.qeq{font-family:var(--font-mono);font-size:30px;color:var(--ink);margin:16px 0 0}
+.qeq span{margin-right:44px}
+.qparts{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+.qp{display:flex;gap:16px;font-size:26px;line-height:1.36;color:var(--ink)}
+.qp>b{flex:none;width:58px;font-family:var(--font-mono);font-weight:700;color:var(--blue);font-size:23px}
+.qp.pre{font-style:italic;color:var(--ink-2);font-size:22px;padding-left:74px}
+.qp.pre>b{width:0}
+
+/* ── panels (replace the generic cards) ─────────────────────────────────── */
+.card{
+  background:#fff; border:1px solid var(--rule-2); border-radius:0;
+  box-shadow:none; padding:26px 28px}
+.card-accent{border-top:4px solid var(--ink)}
+.card-accent.blue{border-top-color:var(--blue)}
+.card-accent.amber{border-top-color:var(--amber)}
+.card-accent.red{border-top-color:var(--red)}
+.card h4{margin-bottom:10px}
+.card p{font-size:27px;line-height:1.42}
+
+/* ── figures ────────────────────────────────────────────────────────────── */
+/* Tall figures get an explicit height budget (.cap) — the SVG then scales to
+   fit inside it and letterboxes, instead of pushing the caption into the
+   footer. Set the budget per slide with style="--cap:800px". */
+.figbox.cap{display:flex;flex-direction:column;justify-content:center;
+  height:var(--cap,700px);padding:56px 18px 16px}
+.figbox.cap svg{flex:1;min-height:0;width:100%;height:100%}
+.figbox.cap .figcap{flex:none;margin-top:10px}
+.figbox{position:relative;background:#fff;border:1px solid var(--rule-2);padding:38px 18px 12px}
+.figbox.tight{padding:38px 12px 10px}
+.fig{width:100%;height:auto;display:block}
+.figbox svg,.figbox img{width:100%;height:auto;display:block;overflow:visible}
+.figtag{
+  position:absolute; left:0; top:0; font-family:var(--font-mono); font-size:14px;
+  letter-spacing:.15em; text-transform:uppercase; color:#fff; background:var(--ink);
+  padding:7px 15px}
+.figcap{margin:12px 2px 2px;font-size:21px;line-height:1.42;color:var(--ink-2)}
+
+/* ── layout helpers ─────────────────────────────────────────────────────── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.two.fig-left{grid-template-columns:1.2fr .8fr}
+.two.fig-right{grid-template-columns:.8fr 1.2fr}
+.two.fig-wide{grid-template-columns:1.45fr .55fr}
+.rule{height:3px;width:64px;background:var(--accent);margin:10px 0 18px}
+
+/* ── calculation steps ──────────────────────────────────────────────────── */
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:19px;align-items:flex-start}
+.step .num{
+  flex:none; width:46px; height:46px; border:1px solid var(--ink); color:var(--ink);
+  display:flex; align-items:center; justify-content:center; font-family:var(--font-mono);
+  font-weight:700; font-size:22px; margin-top:2px; background:#fff}
+.step .body{font-size:31px;line-height:1.38}
+.eq{
+  font-family:var(--font-mono); font-size:29px; background:var(--surface-2);
+  border-left:4px solid var(--blue); padding:12px 18px; display:inline-block; margin-top:6px}
+.res{font-family:var(--font-mono); font-weight:700; color:var(--blue)}
+
+/* ── KPI strip ──────────────────────────────────────────────────────────── */
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kpi.four{grid-template-columns:repeat(4,1fr)}
+.kpi .card{padding:20px 24px}
+.kpi .v{font-family:var(--font-mono); font-size:48px; font-weight:700; line-height:1.08; color:var(--ink)}
+.kpi .k{
+  font-family:var(--font-mono); font-size:14px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:8px}
+
+/* ── tables ─────────────────────────────────────────────────────────────── */
+table.t{width:100%;border-collapse:collapse;font-size:29px}
+table.t th{
+  font-family:var(--font-mono); font-size:14px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; text-align:left; padding:8px 16px 10px;
+  border-bottom:2px solid var(--ink)}
+table.t td{padding:11px 16px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.35}
+table.t tr:last-child td{border-bottom:none}
+table.t td.n{font-family:var(--font-mono);white-space:nowrap}
+
+/* ── semantic colour helpers (identical mapping to the figures) ─────────── */
+.c-cs{color:var(--cs);font-weight:700}
+.c-ps{color:var(--ps);font-weight:700}
+.c-gov{color:var(--gov);font-weight:700}
+.c-dwl{color:var(--dwl);font-weight:700}
+.legend{display:flex;gap:24px;flex-wrap:wrap;font-size:20px;color:var(--ink-2);margin-top:14px}
+.legend i{display:inline-block;width:20px;height:20px;margin-right:9px;vertical-align:-2px}
+.hatch{background:repeating-linear-gradient(45deg,#dc2626 0 3px,#f7b7b7 3px 6px)}
+
+/* ── verdict panels (Q5.2(f), Q5.3(b)) ──────────────────────────────────── */
+.verdict{border:1px solid var(--rule-2);border-left:6px solid var(--red);padding:22px 26px;background:#fff}
+.verdict .tag{
+  font-family:var(--font-mono); font-size:14px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--red); display:block; margin-bottom:8px}
+.verdict.ok{border-left-color:var(--green)}
+.verdict.ok .tag{color:var(--green)}
+
+/* ── misc ───────────────────────────────────────────────────────────────── */
+ul.tight{margin:0;padding-left:20px}
+ul.tight li{margin:8px 0;font-size:31px;line-height:1.36}
+ul.tight li::marker{color:var(--blue)}
+.chip{
+  display:inline-block; padding:5px 14px; font-family:var(--font-mono); font-size:18px;
+  letter-spacing:.06em; border:1px solid var(--rule-2); margin-right:8px; background:#fff}
+
+/* ── print / PDF ────────────────────────────────────────────────────────── */
+@media print{
+  @page{ size: 1920px 1080px; margin: 0 }
+  html,body{background:#fff}
+  .slide{background-color:#fff!important}
+  .slide.cover{background:#0a2540!important}
+}
+</style>
+</head>
+<body data-themes="corporate-clean,minimal-white,academic-paper,swiss-grid,news-broadcast"
+      data-theme-base="../../../../.pi/agent/skills/html-ppt/assets/themes/">
+<div class="deck">
+
+  <!-- ═══════════════════════════ 1 · title ═══════════════════════════ -->
+  <section class="slide cover" data-title="Title" data-no-logo>
+    <svg class="cover-mark" viewBox="0 0 900 620" aria-hidden="true">
+      <path d="M0,150 L760,590" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="6"/>
+      <path d="M0,530 L700,60" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="6"/>
+      <path d="M0,320 L900,320" fill="none" stroke="#ffffff" stroke-opacity=".38" stroke-width="5" stroke-dasharray="18 12"/>
+      <polygon points="300,320 700,320 620,470 360,470" fill="#ffffff" fill-opacity=".07"/>
+      <text x="610" y="296" font-family="Inter, sans-serif" font-size="24" fill="#ffffff" fill-opacity=".5" font-weight="600">world price</text>
+      <text x="700" y="588" font-family="Inter, sans-serif" font-size="30" fill="#ffffff" fill-opacity=".45" font-weight="700">D</text>
+      <text x="652" y="86" font-family="Inter, sans-serif" font-size="30" fill="#ffffff" fill-opacity=".45" font-weight="700">S</text>
+    </svg>
+    <p class="kicker">AF3625 · Engineering Economics · Tutorial presentation</p>
+    <h1>Trade barriers<br>and welfare</h1>
+    <p class="lede">Import quotas, tariffs and deadweight loss in a small open economy —
+      the Group 5 set, Questions 5.1 to 5.4.</p>
+    <div class="rule"></div>
+    <div class="cover-meta">
+      <div><div class="k">Group</div><div class="v">Group 5</div></div>
+      <div><div class="k">Presenters</div><div class="v">add member names</div></div>
+      <div><div class="k">Slot</div><div class="v">Week 9 · 27–30 Oct 2026</div></div>
+      <div><div class="k">Runtime</div><div class="v">≈ 22 minutes</div></div>
+    </div>
+    <div class="slidefoot"><span>AF3625 Engineering Economics</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>20 s · Presenter A</b></p>
+  <p>Good morning. We are Group 5, and this is our tutorial presentation for AF3625. Over the next twenty minutes we will work through Questions 5.1 to 5.4. All four of them are about the same thing: what happens to a small open economy when its government restricts trade.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 2 · roadmap ═══════════════════════════ -->
+  <section class="slide" data-title="Roadmap">
+    <p class="kicker">Roadmap</p>
+    <h2 class="h2">What we will cover</h2>
+    <div class="grid g3 mt-l">
+      <div class="card"><h4>01 · Primer</h4><p class="dim">Small country, world price, consumer and producer
+        surplus, and the two ways of restricting trade.</p></div>
+      <div class="card"><h4>02 · Q5.1 TV market</h4><p class="dim">Why country Z imports, how much, producer
+        surplus, and the effect of a 20,000-unit import quota.</p></div>
+      <div class="card"><h4>03 · Q5.2 Handbags</h4><p class="dim">Algebra: autarky, free trade, the tariff that
+        cuts imports by 25%, revenue and consumer surplus.</p></div>
+      <div class="card"><h4>04 · Q5.3 Egypt</h4><p class="dim">Generators: the post-tariff price, domestic
+        output, imports, tariff revenue, gainers and losers.</p></div>
+      <div class="card"><h4>05 · Q5.4 Article</h4><p class="dim">The EU’s 2024 duties on Chinese electric cars,
+        read through Topic 5.</p></div>
+      <div class="card"><h4>06 · Conclusion</h4><p class="dim">What the four questions have in common — and the
+        Q&amp;A.</p></div>
+    </div>
+    <div class="slidefoot"><span>Roadmap</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter A</b></p>
+  <p>Here is the plan. We start with two minutes of theory that everything else uses — the world price, and the difference between a tariff and an import quota. Then [B] takes the television market in country Z: a diagram question with an import quota. [C] does the handbag algebra, where the government has to choose a tariff. [D] takes Egypt’s generator market, and then a real 2024 trade case — the European Union’s tariffs on Chinese electric cars. We will take questions at the end.</p>
+  <p><b>Handover:</b> Handover to [B] after the two primer slides.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 3 · primer A ═══════════════════════════ -->
+  <section class="slide" data-title="Primer – world price">
+    <p class="kicker">Concept primer · 1 of 2</p>
+    <h2 class="h2">A small country takes the world price as given</h2>
+    <div class="two fig-left mt-l">
+      <div class="figbox">
+        <span class="figtag">Fig. 1 · the import / export rule</span><svg role="img" aria-label="f1-rule" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 570" width="1000" height="570" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f1-rule-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f1-rule-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f1-rule-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f1-rule-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f1-rule-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f1-rule-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f1-rule-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<rect width="1000" height="570" height="100%" fill="#ffffff"/>
+<line x1="110.0" y1="430.0" x2="430.0" y2="430.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="110.0" y1="430.0" x2="110.0" y2="100.0" stroke="#0a2540" stroke-width="2"/>
+<text x="270.0" y="506.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity</text>
+<text x="36.0" y="265.0" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 36.0 265.0)"></text>
+<line x1="110.0" y1="100.0" x2="430.0" y2="340.0" stroke="#0a2540" stroke-width="3"/>
+<line x1="110.0" y1="370.0" x2="430.0" y2="130.0" stroke="#0a2540" stroke-width="3"/>
+<text x="426.8" y="322.0" font-size="27.599999999999998" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="426.8" y="148.0" font-size="27.599999999999998" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="110.0" y1="295.0" x2="449.2" y2="295.0" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="10 6"/>
+<text x="442.8" y="283.0" font-size="23.459999999999997" fill="#1d4ed8" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price</text>
+<line x1="110.0" y1="235.0" x2="290.0" y2="235.0" stroke="#7b8ba0" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="302.0" y="257.0" font-size="32.37479999999999" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="317.5" y="262.2" font-size="16.9" fill="#7b8ba0" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text>
+<line x1="210.0" y1="430.0" x2="210.0" y2="295.0" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="5 5"/>
+<line x1="370.0" y1="430.0" x2="370.0" y2="295.0" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="5 5"/>
+<line x1="210.0" y1="319.0" x2="370.0" y2="319.0" stroke="#1d4ed8" stroke-width="3" marker-start="url(#f1-rule-arws)" marker-end="url(#f1-rule-arwe)"/>
+<text x="290.0" y="345.0" font-size="24.839999999999996" fill="#1d4ed8" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Imports</text>
+<text x="110.0" y="72.0" font-size="36.1836" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="127.3" y="77.8" font-size="18.9" fill="#1d4ed8" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text>
+<text x="140.0" y="72.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">&gt;</text>
+<text x="156.0" y="72.0" font-size="36.1836" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="173.3" y="77.8" font-size="18.9" fill="#1d4ed8" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">w</text>
+<text x="186.0" y="72.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">→ imports</text>
+<line x1="548" y1="70" x2="548" y2="520" stroke="#dbe2ec" stroke-width="2"/>
+<line x1="625.0" y1="430.0" x2="945.0" y2="430.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="625.0" y1="430.0" x2="625.0" y2="100.0" stroke="#0a2540" stroke-width="2"/>
+<text x="785.0" y="506.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity</text>
+<text x="551.0" y="265.0" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 551.0 265.0)"></text>
+<line x1="625.0" y1="100.0" x2="945.0" y2="340.0" stroke="#0a2540" stroke-width="3"/>
+<line x1="625.0" y1="370.0" x2="945.0" y2="130.0" stroke="#0a2540" stroke-width="3"/>
+<text x="941.8" y="322.0" font-size="27.599999999999998" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="941.8" y="148.0" font-size="27.599999999999998" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="625.0" y1="175.0" x2="964.2" y2="175.0" stroke="#0e9f6e" stroke-width="3" stroke-dasharray="10 6"/>
+<text x="957.8" y="163.0" font-size="23.459999999999997" fill="#0e9f6e" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price</text>
+<line x1="625.0" y1="235.0" x2="805.0" y2="235.0" stroke="#7b8ba0" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="817.0" y="257.0" font-size="32.37479999999999" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="832.5" y="262.2" font-size="16.9" fill="#7b8ba0" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text>
+<line x1="885.0" y1="430.0" x2="885.0" y2="175.0" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="5 5"/>
+<line x1="725.0" y1="430.0" x2="725.0" y2="175.0" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="5 5"/>
+<line x1="885.0" y1="199.0" x2="725.0" y2="199.0" stroke="#0e9f6e" stroke-width="3" marker-start="url(#f1-rule-arws)" marker-end="url(#f1-rule-arwe)"/>
+<text x="805.0" y="225.0" font-size="24.839999999999996" fill="#0e9f6e" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Exports</text>
+<text x="625.0" y="72.0" font-size="36.1836" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="642.3" y="77.8" font-size="18.9" fill="#0e9f6e" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text>
+<text x="655.0" y="72.0" font-size="26.22" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">&lt;</text>
+<text x="671.0" y="72.0" font-size="36.1836" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="688.3" y="77.8" font-size="18.9" fill="#0e9f6e" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">w</text>
+<text x="701.0" y="72.0" font-size="26.22" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">→ exports</text>
+</svg>
+        <p class="figcap">Left: the autarky price is above the world price, so at that world price domestic demand exceeds domestic supply — the gap is imported. Right: the opposite case, where the country exports.</p></div>
+      <div>
+        <ul class="tight">
+          <li>A <b>small country</b> is a <b>price taker</b>: its own demand and supply cannot move the world
+            price, so the world price is a <b>horizontal line</b> at <span class="mono-sm">P<sub>w</sub></span>.</li>
+          <li>Once the country trades, domestic buyers and sellers all face
+            <span class="mono-sm">P<sub>w</sub></span>.</li>
+          <li>Autarky price <span class="mono-sm">P<sub>0</sub> &gt; P<sub>w</sub></span> → the country
+            <b>imports</b>; <span class="mono-sm">P<sub>0</sub> &lt; P<sub>w</sub></span> → it <b>exports</b>.</li>
+        </ul>
+        <div class="eq mt-l">Q<sub>import</sub> = Q<sub>d</sub>(P<sub>w</sub>) − Q<sub>s</sub>(P<sub>w</sub>)</div>
+        <p class="note-inline mt-s">The gap between what domestic consumers want and what domestic producers
+          supply at the world price is filled by imports.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Concept primer</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>45 s · Presenter A</b></p>
+  <p>One idea first, because every question depends on it. Country Z and country A are small countries, which means price takers: nothing they buy or sell can move the world price, so the world price is drawn as a flat line. Once they trade, domestic buyers and sellers all face that price. The rule is simple. If the price you would have without trade — the autarky price — is above the world price, you import, because foreign producers can undercut your own. If it is below, you export. And imports are just the gap between what domestic consumers want and what domestic producers will supply at the world price.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 4 · primer B ═══════════════════════════ -->
+  <section class="slide" data-title="Primer – surplus and barriers">
+    <p class="kicker">Concept primer · 2 of 2</p>
+    <h2 class="h2">Surplus, and the two ways to restrict trade</h2>
+    <div class="two fig-left mt-m">
+      <div class="figbox cap" style="--cap:770px">
+        <span class="figtag">Fig. 2 · consumer, producer and social surplus</span><svg role="img" aria-label="f2-surplus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" width="900" height="660" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f2-surplus-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f2-surplus-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f2-surplus-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f2-surplus-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f2-surplus-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f2-surplus-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f2-surplus-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="140.0" y1="560.0" x2="884.0" y2="560.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="140.0" y1="560.0" x2="140.0" y2="98.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="512.0" y1="560.0" x2="512.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="512.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >Q₀</text>
+<line x1="140.0" y1="296.0" x2="133.0" y2="296.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="122.0" y="302.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >P₀</text>
+<text x="512.0" y="636.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity (units per year)</text>
+<text x="66.0" y="329.0" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 66.0 329.0)">Price ($ per unit)</text>
+<polygon points="140.0,98.0 140.0,296.0 512.0,296.0" fill="#1d4ed8" fill-opacity="0.18" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="189.6" y="150.8" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Consumer</text>
+<text x="189.6" y="197.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">surplus</text>
+<polygon points="140.0,296.0 140.0,494.0 512.0,296.0" fill="#0e9f6e" fill-opacity="0.22" stroke="#0e9f6e" stroke-width="1.5"/>
+<text x="202.0" y="388.4" font-size="26.22" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Producer</text>
+<text x="202.0" y="434.6" font-size="26.22" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">surplus</text>
+<line x1="140.0" y1="98.0" x2="884.0" y2="494.0" stroke="#0a2540" stroke-width="3.4"/>
+<line x1="140.0" y1="494.0" x2="884.0" y2="98.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="834.4" y="454.4" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="834.4" y="117.8" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="140.0" y1="296.0" x2="512.0" y2="296.0" stroke="#7b8ba0" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="512.0" y1="296.0" x2="512.0" y2="560.0" stroke="#7b8ba0" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="512.0" cy="296.0" r="6" fill="#0a2540"/>
+<text x="512.0" y="90.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Social surplus = CS + PS</text>
+</svg>
+        <p class="figcap">Social surplus — the whole shaded area — is largest at the autarky equilibrium.</p></div>
+      <div>
+        <div class="legend">
+          <span><i style="background:#1d4ed8;opacity:.55"></i>consumer surplus</span>
+          <span><i style="background:#0e9f6e;opacity:.55"></i>producer surplus</span>
+        </div>
+        <table class="t mt-m">
+          <tr><th></th><th>Tariff</th><th>Import quota</th></tr>
+          <tr><td><b>Instrument</b></td><td>tax on each imported unit</td><td>ceiling on the import
+            <i>quantity</i></td></tr>
+          <tr><td><b>Domestic price</b></td><td class="n">P<sub>w</sub> + t</td>
+            <td>rises until imports = the quota</td></tr>
+          <tr><td><b>Supply curve</b></td><td>unchanged domestic <i>S</i></td>
+            <td class="n">S + quota</td></tr>
+          <tr><td><b>Transfer goes to</b></td><td class="c-gov">the government (tariff revenue)</td>
+            <td class="c-gov">importers (quota rent)</td></tr>
+          <tr><td><b>Cost to society</b></td><td class="c-dwl">two deadweight-loss triangles</td>
+            <td class="c-dwl">the same two triangles</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Concept primer</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>50 s · Presenter A</b></p>
+  <p>Second idea: surplus. Consumer surplus is the area under demand and above the price — the benefit consumers get over what they actually pay. Producer surplus is the area above supply and below the price. Add them and you have social surplus: the total gain the market creates. Now the two barriers we use today. A tariff is a tax on each imported unit: the domestic price becomes the world price plus the tariff, and the government collects that price gap as revenue. A quota caps the quantity: the domestic price rises until the market clears with only that many imports, and the price gap goes to whoever holds the import licences — that is quota rent. Both cost the country the same two deadweight-loss triangles.</p>
+  <p><b>Handover:</b> Handover to [B] — the Q5.1 presenter takes over here.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 5 · Q5.1 the market ═══════════════════════════ -->
+  <section class="slide secopen" data-title="Part 2 · Question 5.1">
+    <span class="secnum">5.1</span>
+    <p class="kicker">Part 2 of 5 · Question 5.1</p>
+    <h2 class="h2">The television market in country Z</h2>
+    <div class="qcard">
+      <span class="qtag">Question 5.1</span>
+      <p class="qscenario">Suppose country Z is a small country where all buyers and sellers there are price takers. The figure below shows the domestic demand and domestic supply curves of television (TV) market in country Z. The country is open for international trade.</p>
+      <div class="qparts">
+        <div class="qp"><b>i)</b><span>Under international free trade, explain why country Z will import televisions.</span></div>
+        <div class="qp"><b>ii)</b><span>Calculate the number of televisions that country Z will import under international free trade.</span></div>
+        <div class="qp"><b>iii)</b><span>What is the amount of producer surplus in country Z under international free trade? Show all the steps of calculation.</span></div>
+        <div class="qp"><b>iv)</b><span>Country Z government intervenes in international trade by imposing an import quota of 20,000 televisions. State the intended effect of such government intervention.</span></div>
+        <div class="qp"><b>v)</b><span>The “Domestic supply plus quota” curve is not plotted correctly in the diagram. Plot the correct domestic supply curve plus quota (label it as S + quota) in the diagram above.</span></div>
+        <div class="qp"><b>vi)</b><span>What is the amount of quota rent? Show all the steps of calculation.</span></div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter B</b></p>
+  <p>Part two is Question 5.1, and I will read it as it is set. Country Z is a small country where all buyers and sellers are price takers; the figure shows the domestic demand and supply curves of the television market; and the country is open for international trade. Six parts: why it imports, how many it imports, producer surplus, the effect of a 20,000-unit quota, the S-plus-quota curve — which the question says is plotted wrongly — and finally quota rent.</p>
+</div>
+  </section>
+
+  <section class="slide" data-title="Q5.1 – the market">
+    <p class="kicker">Question 5.1 · the television market in country Z</p>
+    <h2 class="h2">Reading the diagram</h2>
+    <div class="two fig-wide mt-s">
+      <div class="figbox cap" style="--cap:800px">
+        <span class="figtag">Fig. 3 · country Z: autarky and the world price</span><svg role="img" aria-label="f3a-q51-market" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 665" width="1010" height="665" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f3a-q51-market-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f3a-q51-market-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3a-q51-market-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3a-q51-market-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3a-q51-market-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3a-q51-market-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f3a-q51-market-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="150.0" y1="575.0" x2="918.0" y2="575.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="150.0" y1="575.0" x2="150.0" y2="120.0" stroke="#0a2540" stroke-width="2"/>
+<text x="150.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="246.0" y1="575.0" x2="246.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="246.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >20</text>
+<line x1="342.0" y1="575.0" x2="342.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="342.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<line x1="438.0" y1="575.0" x2="438.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="438.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >60</text>
+<line x1="534.0" y1="575.0" x2="534.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="534.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >80</text>
+<line x1="630.0" y1="575.0" x2="630.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="630.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >100</text>
+<line x1="726.0" y1="575.0" x2="726.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="726.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >120</text>
+<line x1="822.0" y1="575.0" x2="822.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="822.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >140</text>
+<line x1="918.0" y1="575.0" x2="918.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="918.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >160</text>
+<text x="132.0" y="581.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >0</text>
+<line x1="150.0" y1="510.0" x2="143.0" y2="510.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="516.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="150.0" y1="445.0" x2="143.0" y2="445.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="451.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >50</text>
+<line x1="150.0" y1="380.0" x2="143.0" y2="380.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="386.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="150.0" y1="315.0" x2="143.0" y2="315.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="321.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >100</text>
+<line x1="150.0" y1="250.0" x2="143.0" y2="250.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="256.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<line x1="150.0" y1="185.0" x2="143.0" y2="185.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="191.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >150</text>
+<line x1="150.0" y1="120.0" x2="143.0" y2="120.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="126.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >175</text>
+<text x="534.0" y="651.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="76.0" y="347.5" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 76.0 347.5)">Price of TVs ($)</text>
+<line x1="342.0" y1="120.0" x2="841.2" y2="458.0" stroke="#0a2540" stroke-width="3.4"/>
+<line x1="150.0" y1="445.0" x2="630.0" y2="120.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="850.8" y="445.0" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="610.8" y="138.2" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="150.0" y1="217.5" x2="486.0" y2="217.5" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="486.0" y1="575.0" x2="486.0" y2="217.5" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<circle cx="486.0" cy="217.5" r="6" fill="#0a2540"/>
+<text x="486.0" y="151.2" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Autarky price</text>
+<text x="486.0" y="185.0" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">$137.50</text>
+<text x="288.1" y="257.8" font-size="30.470399999999994" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="305.8" y="262.7" font-size="15.9" fill="#7b8ba0" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text><text x="315.7" y="257.8" font-size="30.470399999999994" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 70 thousand</text>
+<line x1="150.0" y1="380.0" x2="975.6" y2="380.0" stroke="#0a2540" stroke-width="3"/>
+<text x="946.8" y="368.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price $75</text>
+</svg>
+        <p class="figcap">Read off the figure: D is P = 225 − 1.25Q and S is P = 50 + 1.25Q (Q in thousands).</p></div>
+      <div>
+        <p class="note-inline">Read the two straight lines off the figure (Q in thousands of TVs):</p>
+        <div class="eq mt-s">Demand:&nbsp; P = 225 − 1.25 Q</div><br>
+        <div class="eq">Supply:&nbsp; P = 50 + 1.25 Q</div>
+        <ul class="tight mt-l">
+          <li><b>Autarky</b> (<span class="mono-sm">D = S</span>): <span class="mono-sm">Q<sub>0</sub> =
+            70,000</span> and <span class="mono-sm">P<sub>0</sub> = $137.50</span>.</li>
+          <li><b>World price</b> = <b>$75</b> — a horizontal line, because Z is a small country and cannot
+            influence it.</li>
+          <li>The world price is <b>below</b> the autarky price, so at $75 domestic consumers want more than
+            domestic producers supply → <b>imports</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter B</b></p>
+  <p>First, read the two lines off the figure. Demand is P equals 225 minus 1.25 Q; supply is P equals 50 plus 1.25 Q, with Q in thousands of televisions. Where they cross is autarky: seventy thousand televisions at a hundred and thirty-seven dollars fifty. The world price is seventy-five dollars, drawn as a horizontal line because country Z cannot influence it. Notice the world price sits below the autarky price — that single fact is the reason this country imports.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 6 · Q5.1 (i)(ii) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.1 (i) (ii)">
+    <p class="kicker">Question 5.1 (i) and (ii)</p>
+    <h2 class="h2">Why Z imports — and how many TVs</h2>
+    <div class="two fig-left mt-s">
+      <div class="figbox">
+        <span class="figtag">Fig. 4 · free trade: imports = Q<sub>d</sub> − Q<sub>s</sub></span><svg role="img" aria-label="f3b-q51-trade" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 665" width="1010" height="665" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f3b-q51-trade-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f3b-q51-trade-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3b-q51-trade-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3b-q51-trade-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3b-q51-trade-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3b-q51-trade-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f3b-q51-trade-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="150.0" y1="575.0" x2="918.0" y2="575.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="150.0" y1="575.0" x2="150.0" y2="120.0" stroke="#0a2540" stroke-width="2"/>
+<text x="150.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="246.0" y1="575.0" x2="246.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="246.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >20</text>
+<line x1="342.0" y1="575.0" x2="342.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="342.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<line x1="438.0" y1="575.0" x2="438.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="438.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >60</text>
+<line x1="534.0" y1="575.0" x2="534.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="534.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >80</text>
+<line x1="630.0" y1="575.0" x2="630.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="630.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >100</text>
+<line x1="726.0" y1="575.0" x2="726.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="726.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >120</text>
+<line x1="822.0" y1="575.0" x2="822.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="822.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >140</text>
+<line x1="918.0" y1="575.0" x2="918.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="918.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >160</text>
+<text x="132.0" y="581.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >0</text>
+<line x1="150.0" y1="510.0" x2="143.0" y2="510.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="516.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="150.0" y1="445.0" x2="143.0" y2="445.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="451.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >50</text>
+<line x1="150.0" y1="380.0" x2="143.0" y2="380.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="386.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="150.0" y1="315.0" x2="143.0" y2="315.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="321.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >100</text>
+<line x1="150.0" y1="250.0" x2="143.0" y2="250.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="256.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<line x1="150.0" y1="185.0" x2="143.0" y2="185.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="191.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >150</text>
+<line x1="150.0" y1="120.0" x2="143.0" y2="120.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="126.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >175</text>
+<text x="534.0" y="651.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="76.0" y="347.5" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 76.0 347.5)">Price of TVs ($)</text>
+<line x1="342.0" y1="120.0" x2="841.2" y2="458.0" stroke="#0a2540" stroke-width="3.4"/>
+<line x1="150.0" y1="445.0" x2="630.0" y2="120.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="850.8" y="445.0" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="610.8" y="138.2" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="150.0" y1="217.5" x2="486.0" y2="217.5" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="486.0" y1="575.0" x2="486.0" y2="217.5" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<circle cx="486.0" cy="217.5" r="6" fill="#0a2540"/>
+<text x="486.0" y="151.2" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Autarky price</text>
+<text x="486.0" y="185.0" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">$137.50</text>
+<text x="288.1" y="257.8" font-size="30.470399999999994" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="305.8" y="262.7" font-size="15.9" fill="#7b8ba0" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">0</text><text x="315.7" y="257.8" font-size="30.470399999999994" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 70 thousand</text>
+<line x1="150.0" y1="380.0" x2="975.6" y2="380.0" stroke="#0a2540" stroke-width="3"/>
+<text x="946.8" y="368.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price $75</text>
+<line x1="246.0" y1="575.0" x2="246.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="726.0" y1="575.0" x2="726.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<circle cx="246.0" cy="380.0" r="6" fill="#0a2540"/>
+<circle cx="726.0" cy="380.0" r="6" fill="#0a2540"/>
+<text x="250.8" y="393.0" font-size="32.37479999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="269.6" y="398.2" font-size="16.9" fill="#0a2540" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">s</text>
+<text x="284.8" y="393.0" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">= 20</text>
+<text x="618.8" y="393.0" font-size="32.37479999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="637.5" y="398.2" font-size="16.9" fill="#0a2540" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">d</text><text x="648.0" y="393.0" font-size="32.37479999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 120</text>
+<polygon points="150.0,380.0 150.0,445.0 246.0,380.0" fill="#0e9f6e" fill-opacity="0.32" stroke="#0e9f6e" stroke-width="1.8"/>
+<text x="174.0" y="426.8" font-size="22.08" fill="#0e9f6e" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">PS</text>
+<line x1="246.0" y1="426.0" x2="726.0" y2="426.0" stroke="#1d4ed8" stroke-width="3" marker-start="url(#f3b-q51-trade-cs_a)" marker-end="url(#f3b-q51-trade-cs_b)"/>
+<text x="428.4" y="460.0" font-size="36.1836" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="449.4" y="465.8" font-size="18.9" fill="#1d4ed8" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">import</text>
+<text x="506.4" y="460.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">= 120 − 20 = 100 (thousand)</text>
+</svg>
+        <p class="figcap">At $75 domestic producers supply 20,000 TVs and consumers demand 120,000 — the gap is imported.</p></div>
+      <div>
+        <h3 class="h3">(i) Why imports?</h3>
+        <ul class="tight">
+          <li>At $75 producers supply <b>20,000</b> but consumers want <b>120,000</b> — and foreign
+            producers will sell at $75, so the shortfall is imported.</li>
+        </ul>
+        <h3 class="h3 mt-l">(ii) How many?</h3>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body">At <span class="mono-sm">P = $75</span>:
+            <span class="mono-sm">Q<sub>s</sub> = 20</span> thousand,
+            <span class="mono-sm">Q<sub>d</sub> = 120</span> thousand.</div></div>
+          <div class="step"><div class="num">2</div><div class="body">Imports
+            <span class="mono-sm">= Q<sub>d</sub> − Q<sub>s</sub> = 100</span> thousand =
+            <span class="res">100,000 TVs</span>.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter B</b></p>
+  <p>Part (i) asks why. At seventy-five dollars, domestic producers will supply only twenty thousand televisions, but consumers want a hundred and twenty thousand. Domestic supply on its own cannot satisfy that demand at that price, and foreign producers are willing to sell at seventy-five, so the shortfall is imported. Part (ii): put seventy-five into the supply equation and you get twenty thousand; into demand and you get a hundred and twenty thousand. Imports are the difference — one hundred thousand televisions a year.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 7 · Q5.1 (iii) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.1 (iii) producer surplus">
+    <p class="kicker">Question 5.1 (iii)</p>
+    <h2 class="h2">Producer surplus under free trade</h2>
+    <div class="two fig-left mt-s">
+      <div class="figbox">
+        <span class="figtag">Fig. 5 · producer surplus at the world price</span><svg role="img" aria-label="f3c-q51-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" width="1000" height="660" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f3c-q51-ps-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f3c-q51-ps-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3c-q51-ps-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f3c-q51-ps-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3c-q51-ps-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f3c-q51-ps-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f3c-q51-ps-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="190.0" y1="560.0" x2="990.0" y2="560.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="190.0" y1="560.0" x2="190.0" y2="42.0" stroke="#0a2540" stroke-width="2"/>
+<text x="190.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="390.0" y1="560.0" x2="390.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="390.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >10</text>
+<line x1="590.0" y1="560.0" x2="590.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="590.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >20</text>
+<line x1="790.0" y1="560.0" x2="790.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="790.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >30</text>
+<line x1="990.0" y1="560.0" x2="990.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="990.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<text x="172.0" y="566.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >0</text>
+<line x1="190.0" y1="467.5" x2="183.0" y2="467.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="172.0" y="473.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="190.0" y1="375.0" x2="183.0" y2="375.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="172.0" y="381.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >50</text>
+<line x1="190.0" y1="282.5" x2="183.0" y2="282.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="172.0" y="288.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="190.0" y1="190.0" x2="183.0" y2="190.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="172.0" y="196.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >100</text>
+<line x1="190.0" y1="97.5" x2="183.0" y2="97.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="172.0" y="103.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<text x="590.0" y="636.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="116.0" y="301.0" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 116.0 301.0)">Price of TVs ($)</text>
+<polygon points="190.0,282.5 190.0,375.0 590.0,282.5" fill="#0e9f6e" fill-opacity="0.34" stroke="#0e9f6e" stroke-width="2"/>
+<line x1="190.0" y1="375.0" x2="830.0" y2="227.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="770.0" y="286.2" font-size="27.599999999999998" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="190.0" y1="282.5" x2="990.0" y2="282.5" stroke="#0a2540" stroke-width="3"/>
+<text x="202.0" y="249.2" font-size="24.839999999999996" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price $75</text>
+<line x1="590.0" y1="560.0" x2="590.0" y2="282.5" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<circle cx="590.0" cy="282.5" r="6" fill="#0a2540"/>
+<line x1="690.0" y1="375.0" x2="690.0" y2="282.5" stroke="#0e9f6e" stroke-width="2.4" marker-start="url(#f3c-q51-ps-gv_a)" marker-end="url(#f3c-q51-ps-gv_b)"/>
+<text x="730.0" y="315.8" font-size="23.459999999999997" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">height</text>
+<text x="730.0" y="349.1" font-size="23.459999999999997" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">= $25</text>
+<line x1="190.0" y1="526.7" x2="590.0" y2="526.7" stroke="#0e9f6e" stroke-width="2.4" marker-start="url(#f3c-q51-ps-gv_a)" marker-end="url(#f3c-q51-ps-gv_b)"/>
+<text x="390.0" y="486.0" font-size="23.459999999999997" fill="#0e9f6e" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">base = 20,000 TVs</text>
+<text x="200.0" y="67.9" font-size="24.839999999999996" fill="#0e9f6e" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Shaded triangle = producer surplus at the world price</text>
+</svg>
+        <p class="figcap">½ × 20,000 × $25 = $250,000. Only domestic production counts, so the base is 20,000, not 120,000.</p></div>
+      <div>
+        <p class="note-inline">Producer surplus is the area <b>above</b> the domestic supply curve and <b>below</b>
+          the price, up to the quantity sold. At the world price it is a triangle.</p>
+        <div class="steps mt-m">
+          <div class="step"><div class="num">1</div><div class="body">Base = quantity supplied at $75
+            = <b>20,000</b> TVs.</div></div>
+          <div class="step"><div class="num">2</div><div class="body">Height = price − the price at which supply
+            starts = <span class="mono-sm">$75 − $50 = <b>$25</b></span>.</div></div>
+          <div class="step"><div class="num">3</div><div class="body">
+            <span class="mono-sm">PS = ½ × base × height = ½ × 20,000 × $25</span></div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:24px">PS = <b>$250,000</b></div>
+        <p class="note-inline mt-s">Units: 20,000 TVs × $25 ÷ 2 → dollars.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter B</b></p>
+  <p>Part (iii) is producer surplus under free trade. It is the triangle above the domestic supply curve and below seventy-five dollars, up to the twenty thousand that domestic producers sell. Base is twenty thousand; height is seventy-five minus fifty, so twenty-five dollars. A half times base times height gives two hundred and fifty thousand dollars. The trap here is using a hundred and twenty thousand as the base — that is what consumers buy, but the surplus belongs to domestic producers only.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 8 · Q5.1 (iv) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.1 (iv) quota effect">
+    <p class="kicker">Question 5.1 (iv)</p>
+    <h2 class="h2">What a 20,000-unit import quota is meant to do</h2>
+    <div class="grid g3 mt-l">
+      <div class="card card-accent"><h4>1 · Restrict supply</h4>
+        <p class="dim">Legal imports are capped at 20,000 TVs — far below the 100,000 that would be imported
+          under free trade, so the quota <b>binds</b>.</p></div>
+      <div class="card card-accent"><h4>2 · Raise the domestic price</h4>
+        <p class="dim">With less total supply available, consumers bid the domestic price <b>above</b> the world
+          price; domestic producers respond by increasing output.</p></div>
+      <div class="card card-accent"><h4>3 · Protect domestic producers</h4>
+        <p class="dim">Higher prices and larger domestic sales raise producer surplus, but consumers pay more and
+          their surplus falls.</p></div>
+    </div>
+    <div class="two mt-l">
+      <div>
+        <p class="note-inline">Intended effect, in one sentence:</p>
+        <p style="font-size:22px">By limiting imports to 20,000 TVs, the government intends to
+          <b>reduce the quantity of imports, raise the domestic price and domestic production, and thereby protect
+          domestic TV producers from foreign competition</b>.</p>
+      </div>
+      <div class="kpi">
+        <div class="card"><div class="v">20k</div><div class="k">quota (imports)</div></div>
+        <div class="card"><div class="v">100k</div><div class="k">free-trade imports</div></div>
+        <div class="card"><div class="v">-80%</div><div class="k">reduction in imports</div></div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>40 s · Presenter B</b></p>
+  <p>Part (iv): the government imposes an import quota of twenty thousand televisions. The intended effect comes in three steps. It caps imports at twenty thousand, far below the hundred thousand that free trade would bring in, so the quota binds. Total supply at seventy-five dollars is now too small, so consumers bid the price up. And that higher price pulls more domestic production in. In one sentence: by limiting imports, the government intends to raise the domestic price and domestic output, and so protect domestic producers — at the expense of consumers.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 9 · Q5.1 (v) the trap ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.1 (v) tracing S + quota">
+    <p class="kicker">Question 5.1 (v) · the part of the question most groups get wrong</p>
+    <h2 class="h2">Plotting “S + quota” correctly</h2>
+    <div class="two fig-left mt-s">
+      <div class="figbox tight">
+        <span class="figtag">Fig. 7 · as printed (red) and as it should be (amber)</span><svg role="img" aria-label="f5-q51-trap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 570" width="1200" height="570" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f5-q51-trap-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f5-q51-trap-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f5-q51-trap-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f5-q51-trap-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f5-q51-trap-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f5-q51-trap-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f5-q51-trap-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="150.0" y1="500.0" x2="615.0" y2="500.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="150.0" y1="500.0" x2="150.0" y2="132.5" stroke="#0a2540" stroke-width="2"/>
+<text x="150.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="274.0" y1="500.0" x2="274.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="274.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<line x1="398.0" y1="500.0" x2="398.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="398.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >80</text>
+<line x1="522.0" y1="500.0" x2="522.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="522.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >120</text>
+<line x1="150.0" y1="447.5" x2="143.0" y2="447.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="453.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="150.0" y1="342.5" x2="143.0" y2="342.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="348.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="150.0" y1="237.5" x2="143.0" y2="237.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="243.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<line x1="150.0" y1="132.5" x2="143.0" y2="132.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="138.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >175</text>
+<text x="382.5" y="576.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="76.0" y="316.2" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 76.0 316.2)"></text>
+<line x1="258.5" y1="132.5" x2="596.4" y2="405.5" stroke="#0a2540" stroke-width="3"/>
+<line x1="150.0" y1="395.0" x2="460.0" y2="132.5" stroke="#0a2540" stroke-width="3"/>
+<line x1="150.0" y1="342.5" x2="646.0" y2="342.5" stroke="#7b8ba0" stroke-width="2.4"/>
+<text x="447.6" y="437.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="429.0" y="138.8" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="150.0" y1="447.5" x2="522.0" y2="132.5" stroke="#dc2626" stroke-width="3.6"/>
+<text x="472.4" y="189.2" font-size="24.839999999999996" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S + quota</text>
+<circle cx="150.0" cy="447.5" r="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+<line x1="132.0" y1="429.5" x2="168.0" y2="465.5" stroke="#dc2626" stroke-width="3"/>
+<text x="174.8" y="476.9" font-size="20.7" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">starts at $25 — below the world price,</text>
+<text x="174.8" y="504.2" font-size="20.7" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">so it implies imports there too</text>
+<line x1="590" y1="70" x2="590" y2="510" stroke="#dbe2ec" stroke-width="2"/>
+<line x1="750.0" y1="500.0" x2="1215.0" y2="500.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="750.0" y1="500.0" x2="750.0" y2="132.5" stroke="#0a2540" stroke-width="2"/>
+<text x="750.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="874.0" y1="500.0" x2="874.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="874.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<line x1="998.0" y1="500.0" x2="998.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="998.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >80</text>
+<line x1="1122.0" y1="500.0" x2="1122.0" y2="507.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="1122.0" y="534.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >120</text>
+<line x1="750.0" y1="447.5" x2="743.0" y2="447.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="732.0" y="453.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="750.0" y1="342.5" x2="743.0" y2="342.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="732.0" y="348.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="750.0" y1="237.5" x2="743.0" y2="237.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="732.0" y="243.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<line x1="750.0" y1="132.5" x2="743.0" y2="132.5" stroke="#0a2540" stroke-width="1.6"/>
+<text x="732.0" y="138.5" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >175</text>
+<text x="982.5" y="576.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="676.0" y="316.2" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 676.0 316.2)"></text>
+<line x1="858.5" y1="132.5" x2="1196.4" y2="405.5" stroke="#0a2540" stroke-width="3"/>
+<line x1="750.0" y1="395.0" x2="1060.0" y2="132.5" stroke="#0a2540" stroke-width="3"/>
+<line x1="750.0" y1="342.5" x2="1246.0" y2="342.5" stroke="#7b8ba0" stroke-width="2.4"/>
+<text x="1047.6" y="437.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="1029.0" y="138.8" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<path d="M 750.0,395.0 L 812.0,342.5 L 874.0,342.5 L 1106.5,145.1" fill="none" stroke="#d97706" stroke-width="3.6"/>
+<text x="1047.6" y="206.0" font-size="24.839999999999996" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S + quota</text>
+<line x1="812.0" y1="500.0" x2="812.0" y2="342.5" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<line x1="874.0" y1="500.0" x2="874.0" y2="342.5" stroke="#7b8ba0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<path d="M 812.0,342.5 L 874.0,342.5" stroke="#d97706" stroke-width="6"/>
+<text x="824.4" y="361.4" font-size="20.7" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">= quota 20,000</text>
+<text x="768.6" y="390.8" font-size="20.7" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">follows S below the world price,</text>
+<text x="768.6" y="420.2" font-size="20.7" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">then shifts right by the quota</text>
+</svg>
+        <p class="figcap">Left: the printed curve, one straight line from $25. Right: kinked — domestic S below the world price, then shifted right by the quota.</p></div>
+      <div>
+        <p class="note-inline">The rule from Topic 5:</p>
+        <p style="font-size:21px">“When the domestic price is <b>at or above</b> the world price, supply becomes
+          <b>S + quota</b>.”</p>
+        <p class="note-inline mt-m">So the correct curve is a <b>kinked</b> curve:</p>
+        <ul class="tight mt-s">
+          <li><b>Below</b> $75 it <b>coincides with domestic S</b> — it does not run down to the price axis.</li>
+          <li><b>At</b> $75 it <b>jumps right</b> by the quota: 20,000 → 40,000 TVs.</li>
+          <li><b>Above</b> $75 it is domestic S <b>shifted right by 20,000</b>, starting at (40, $75).</li>
+        </ul>
+        <p class="note-inline mt-m">The printed figure draws one straight line from about $25 on the price axis —
+          that is the curve the question asks you to correct.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>55 s · Presenter B</b></p>
+  <p>Part (v) is the part the question warns you about. The rule from Topic 5 is: when the domestic price is at or above the world price, supply becomes S plus quota. So the correct curve is kinked, not a straight line. Below seventy-five dollars there are no imports at all, so supply is just the domestic curve. At seventy-five dollars it jumps to the right by the quota — twenty thousand to forty thousand. Above that it is the domestic supply curve shifted right by twenty thousand, starting at forty thousand. The curve printed in the figure runs all the way down to twenty-five dollars on the price axis: it implies imports at prices where no imports are possible. That is the error they are testing.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 10 · Q5.1 (vi) quota rent ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.1 (vi) quota rent">
+    <p class="kicker">Question 5.1 (vi)</p>
+    <h2 class="h2">Quota rent</h2>
+    <div class="two fig-wide mt-s">
+      <div class="figbox cap" style="--cap:800px">
+        <span class="figtag">Fig. 6 · the quota at work</span><svg role="img" aria-label="f4-q51-quota" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 665" width="1010" height="665" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f4-q51-quota-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f4-q51-quota-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f4-q51-quota-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f4-q51-quota-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f4-q51-quota-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f4-q51-quota-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f4-q51-quota-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="150.0" y1="575.0" x2="918.0" y2="575.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="150.0" y1="575.0" x2="150.0" y2="120.0" stroke="#0a2540" stroke-width="2"/>
+<text x="150.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="246.0" y1="575.0" x2="246.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="246.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >20</text>
+<line x1="342.0" y1="575.0" x2="342.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="342.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >40</text>
+<line x1="438.0" y1="575.0" x2="438.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="438.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >60</text>
+<line x1="534.0" y1="575.0" x2="534.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="534.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >80</text>
+<line x1="630.0" y1="575.0" x2="630.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="630.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >100</text>
+<line x1="726.0" y1="575.0" x2="726.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="726.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >120</text>
+<line x1="822.0" y1="575.0" x2="822.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="822.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >140</text>
+<line x1="918.0" y1="575.0" x2="918.0" y2="582.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="918.0" y="609.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >160</text>
+<text x="132.0" y="581.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >0</text>
+<line x1="150.0" y1="510.0" x2="143.0" y2="510.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="516.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >25</text>
+<line x1="150.0" y1="445.0" x2="143.0" y2="445.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="451.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >50</text>
+<line x1="150.0" y1="380.0" x2="143.0" y2="380.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="386.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >75</text>
+<line x1="150.0" y1="315.0" x2="143.0" y2="315.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="321.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >100</text>
+<line x1="150.0" y1="250.0" x2="143.0" y2="250.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="256.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >125</text>
+<line x1="150.0" y1="185.0" x2="143.0" y2="185.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="191.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >150</text>
+<line x1="150.0" y1="120.0" x2="143.0" y2="120.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="132.0" y="126.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >175</text>
+<text x="534.0" y="651.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of TVs (thousands)</text>
+<text x="76.0" y="347.5" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 76.0 347.5)">Price of TVs ($)</text>
+<line x1="342.0" y1="120.0" x2="841.2" y2="458.0" stroke="#0a2540" stroke-width="3.4"/>
+<line x1="150.0" y1="445.0" x2="630.0" y2="120.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="850.8" y="445.0" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="610.8" y="138.2" font-size="30.36" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="150.0" y1="380.0" x2="975.6" y2="380.0" stroke="#0a2540" stroke-width="3"/>
+<text x="946.8" y="368.0" font-size="26.22" fill="#0a2540" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">World price $75</text>
+<path d="M 150.0,445.0 L 246.0,380.0 L 342.0,380.0 L 726.0,120.0" fill="none" stroke="#d97706" stroke-width="3.8"/>
+<text x="735.6" y="127.8" font-size="28.979999999999997" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S + quota</text>
+<polygon points="438.0,380.0 534.0,380.0 534.0,250.0 438.0,250.0" fill="#d97706" fill-opacity="0.30" stroke="#d97706" stroke-width="2"/>
+<line x1="150.0" y1="250.0" x2="534.0" y2="250.0" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="534.0" y1="575.0" x2="534.0" y2="250.0" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<line x1="438.0" y1="575.0" x2="438.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.8" stroke-dasharray="7 5"/>
+<circle cx="534.0" cy="250.0" r="6.5" fill="#0a2540"/>
+<text x="136.0" y="256.0" font-size="24.839999999999996" fill="#0a2540" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">125</text>
+<text x="534.0" y="234.4" font-size="23.459999999999997" fill="#0a2540" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">$125</text>
+<line x1="668.4" y1="179.8" x2="543.6" y2="247.4" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="678.0" y="172.0" font-size="23.459999999999997" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">post-quota price</text>
+<text x="438.0" y="607.0" font-size="23.459999999999997" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">60</text>
+<text x="534.0" y="607.0" font-size="23.459999999999997" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">80</text>
+<text x="486.0" y="346.2" font-size="20.7" fill="#d97706" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quota rent</text>
+<line x1="246.0" y1="403.4" x2="342.0" y2="403.4" stroke="#d97706" stroke-width="3" marker-start="url(#f4-q51-quota-gv_a)" marker-end="url(#f4-q51-quota-gv_b)"/>
+<text x="294.0" y="429.4" font-size="22.08" fill="#d97706" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">quota = 20</text>
+</svg>
+        <p class="figcap">S + quota meets demand at $125: producers supply 60,000, imports are the 20,000 quota, and the rent rectangle is $1,000,000.</p></div>
+      <div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body"><span class="mono-sm">S + quota</span> meets
+            demand at <span class="mono-sm">Q = 80</span> thousand, <b>P = $125</b>.</div></div>
+          <div class="step"><div class="num">2</div><div class="body">Domestic supply at $125 is 60 thousand, so
+            imports <span class="mono-sm">= 80 − 60 = 20</span> thousand = the quota ✓</div></div>
+          <div class="step"><div class="num">3</div><div class="body">Quota rent
+            <span class="mono-sm">= ($125 − $75) × 20,000</span></div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:24px">Quota rent = <b>$1,000,000</b></div>
+        <p class="note-inline mt-s">The rent goes to the licence holders — the <b>importers</b>, not the
+          government.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.1 · Country Z</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>40 s · Presenter B</b></p>
+  <p>Part (vi), quota rent. With S plus quota, the market clears where supply meets demand: eighty thousand televisions at a hundred and twenty-five dollars. Domestic producers supply sixty thousand of those, so imports are twenty thousand — exactly the quota, which is our check. Quota rent is the price gap times the quantity imported: a hundred and twenty-five minus seventy-five is fifty dollars, times twenty thousand — one million dollars. And notice who receives it: whoever holds the import licences, the importers, not the government. That is the difference from a tariff.</p>
+  <p><b>Handover:</b> Handover to [C] — the Q5.2 presenter takes over here.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 11 · Q5.2 setup ═══════════════════════════ -->
+  <section class="slide secopen" data-title="Part 3 · Question 5.2">
+    <span class="secnum">5.2</span>
+    <p class="kicker">Part 3 of 5 · Question 5.2</p>
+    <h2 class="h2">The handbag market in country A</h2>
+    <div class="qcard">
+      <span class="qtag">Question 5.2</span>
+      <p class="qscenario">Suppose country A is a small country where all buyers and sellers there are price takers. Below are the market demand and market supply equations of handbag in country A, which P is the price per handbag and Q is the number of handbags per year.</p>
+      <p class="qeq"><span>Q<sub>d</sub> = −2P + 40,000</span><span>Q<sub>s</sub> = 46P + 6,400</span></p>
+      <div class="qparts">
+        <div class="qp"><b>a)</b><span>Without international trade, what are the equilibrium price and equilibrium quantity of handbags in country A? Show all the steps of calculation.</span></div>
+        <div class="qp pre"><b></b><span>Now country A is open for international trade. The world price per handbag is $600.</span></div>
+        <div class="qp"><b>b)</b><span>How many handbags does country A import under international free trade? Show all the steps of calculation.</span></div>
+        <div class="qp pre"><b></b><span>To protect the local producers under international trade, country A government plans to impose tariff on imported handbags.</span></div>
+        <div class="qp"><b>c)</b><span>In order to decrease the import amount by 25% per year, what is the amount of per-unit tariff that the government should impose on imported handbags? Show all the steps of calculation.</span></div>
+        <div class="qp"><b>d)</b><span>What is the amount of tariff revenue? Show all the steps of calculation.</span></div>
+        <div class="qp"><b>e)</b><span>What is the amount of consumer surplus under tariff? Show all the steps of calculation.</span></div>
+        <div class="qp"><b>f)</b><span>“The imposition of tariff is beneficial to country A as a whole because the government can receive tariff revenue.” Explain whether the statement is true or false.</span></div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>30 s · Presenter C</b></p>
+  <p>Thank you — I will take Question 5.2. Country A is a small country again, and this time we are given equations: demand is minus two P plus forty thousand, supply is forty-six P plus six thousand four hundred. Parts (a) to (f): autarky, free-trade imports, the tariff that cuts imports by a quarter, tariff revenue, consumer surplus under the tariff, and finally whether a tariff benefits the country as a whole.</p>
+</div>
+  </section>
+
+  <section class="slide" data-title="Q5.2 – setup">
+    <p class="kicker">Question 5.2 · the handbag market in country A</p>
+    <h2 class="h2">Setting up the algebra</h2>
+    <div class="grid g2 mt-l">
+      <div class="card">
+        <h4>Market demand and supply</h4>
+        <div class="eq mt-s" style="font-size:22px">Q<sub>d</sub> = −2P + 40,000</div><br>
+        <div class="eq" style="font-size:22px">Q<sub>s</sub> = 46P + 6,400</div>
+        <p class="note-inline mt-s">P = price per handbag ($) · Q = handbags per year.
+          Country A is a small country, so it takes the world price as given.</p>
+      </div>
+      <div class="card">
+        <h4>The method — the same three moves in every part</h4>
+        <ul class="tight mt-s">
+          <li><b>Autarky:</b> set <span class="mono-sm">Q<sub>d</sub> = Q<sub>s</sub></span> and solve for
+            <span class="mono-sm">P</span>, then for <span class="mono-sm">Q</span>.</li>
+          <li><b>Free trade:</b> evaluate both equations at the <b>world price</b>
+            <span class="mono-sm">P<sub>w</sub> = $600</span>.</li>
+          <li><b>Imports:</b> <span class="mono-sm">Q<sub>d</sub> − Q<sub>s</sub></span> at the price buyers
+            actually face. With a tariff, that price is <span class="mono-sm">P<sub>w</sub> + t</span>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="eq mt-l" style="font-size:22px">Imports = Q<sub>d</sub> − Q<sub>s</sub>
+      = (−2P + 40,000) − (46P + 6,400) = <b>33,600 − 48P</b></div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>40 s · Presenter C</b></p>
+  <p>Before the numbers, the method, because every part uses the same three moves. Without trade, the market clears domestically: set demand equal to supply. With trade, evaluate both equations at the world price of six hundred dollars. And imports are always demand minus supply at the price buyers actually face — which, with a tariff, is the world price plus the tariff. Subtract supply from demand once and you get the import function: thirty-three thousand six hundred minus forty-eight P. Every extra dollar of domestic price cuts imports by forty-eight handbags.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 12 · Q5.2 (a) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (a) autarky">
+    <p class="kicker">Question 5.2 (a) · without international trade</p>
+    <h2 class="h2">Autarky equilibrium</h2>
+    <div class="two fig-wide mt-s">
+      <div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body">“Without international trade” means the market
+            clears domestically: <span class="mono-sm">Q<sub>d</sub> = Q<sub>s</sub></span>.</div></div>
+          <div class="step"><div class="num">2</div><div class="body">
+            <span class="mono-sm">−2P + 40,000 = 46P + 6,400</span></div></div>
+          <div class="step"><div class="num">3</div><div class="body">
+            <span class="mono-sm">40,000 − 6,400 = 46P + 2P</span> → <span class="mono-sm">33,600 = 48P</span></div></div>
+          <div class="step"><div class="num">4</div><div class="body">
+            <span class="mono-sm">P* = 33,600 / 48 = <b>$700</b></span></div></div>
+          <div class="step"><div class="num">5</div><div class="body">Substitute back:
+            <span class="mono-sm">Q* = −2(700) + 40,000 = <b>38,600</b></span></div></div>
+          <div class="step"><div class="num">6</div><div class="body">Check with supply:
+            <span class="mono-sm">46(700) + 6,400 = 38,600</span> ✓</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="kpi" style="grid-template-columns:1fr">
+          <div class="card"><div class="k">equilibrium price</div><div class="v">$700</div></div>
+          <div class="card"><div class="k">equilibrium quantity</div><div class="v">38,600</div></div>
+        </div>
+        <p class="note-inline mt-m">The two curves cross at $700 — the price country A would have with no trade
+          at all.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>30 s · Presenter C</b></p>
+  <p>Part (a), autarky. Without international trade, quantity demanded equals quantity supplied. So minus two P plus forty thousand equals forty-six P plus six thousand four hundred. Collect the terms and thirty-three thousand six hundred equals forty-eight P, which gives an equilibrium price of seven hundred dollars. Put that back into demand and you get thirty-eight thousand six hundred handbags a year. Check it in supply — also thirty-eight thousand six hundred.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 13 · Q5.2 (b) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (b) free-trade imports">
+    <p class="kicker">Question 5.2 (b)</p>
+    <h2 class="h2">Imports under free trade (P<sub>w</sub> = $600)</h2>
+    <div class="two fig-right mt-s">
+      <div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body">Quantity demanded at $600:
+            <span class="mono-sm">Q<sub>d</sub> = −2(600) + 40,000 = <b>38,800</b></span></div></div>
+          <div class="step"><div class="num">2</div><div class="body">Quantity supplied at $600:
+            <span class="mono-sm">Q<sub>s</sub> = 46(600) + 6,400 = <b>34,000</b></span></div></div>
+          <div class="step"><div class="num">3</div><div class="body">Imports =
+            <span class="mono-sm">38,800 − 34,000</span></div></div>
+          <div class="step"><div class="num">4</div><div class="body">Short cut with the import function:
+            <span class="mono-sm">33,600 − 48(600) = 4,800</span> ✓</div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:24px">Free-trade imports = <b>4,800 handbags per year</b></div>
+        <p class="note-inline mt-s">The world price $600 is below the autarky price $700, so A imports.</p>
+      </div>
+      <div>
+        <div class="kpi" style="grid-template-columns:1fr">
+          <div class="card"><div class="k">Q<sub>d</sub> at $600</div><div class="v">38,800</div></div>
+          <div class="card"><div class="k">Q<sub>s</sub> at $600</div><div class="v">34,000</div></div>
+          <div class="card" style="border-color:var(--cs)"><div class="k">imports</div><div class="v">4,800</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>30 s · Presenter C</b></p>
+  <p>Part (b), free trade at six hundred dollars a handbag. Demand at six hundred is thirty-eight thousand eight hundred; supply is thirty-four thousand. So imports are four thousand eight hundred handbags a year — or use the import function: thirty-three thousand six hundred minus forty-eight times six hundred gives the same answer. Consumers now pay less than they did under autarky, so they buy more; domestic firms sell less. That gap is the import.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 14 · Q5.2 (c) tariff ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (c) the tariff">
+    <p class="kicker">Question 5.2 (c)</p>
+    <h2 class="h2">The tariff that cuts imports by 25%</h2>
+    <div class="two fig-left mt-s">
+      <div class="figbox">
+        <span class="figtag">Fig. 8 · Q5.2: imports before and after the tariff</span><svg role="img" aria-label="f6-q52-gap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f6-q52-gap-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f6-q52-gap-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f6-q52-gap-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f6-q52-gap-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f6-q52-gap-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f6-q52-gap-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f6-q52-gap-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<text x="270.0" y="52.0" font-size="23.459999999999997" fill="#7b8ba0" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of handbags per year</text>
+<text x="244.0" y="88.0" font-size="27.599999999999998" fill="#1d4ed8" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Free trade:  P = $600</text>
+<line x1="362.9" y1="140.0" x2="808.6" y2="140.0" stroke="#1d4ed8" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+<circle cx="362.9" cy="140.0" r="7" fill="#1d4ed8"/>
+<circle cx="808.6" cy="140.0" r="7" fill="#1d4ed8"/>
+<line x1="362.9" y1="140.0" x2="362.9" y2="170.0" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="808.6" y1="140.0" x2="808.6" y2="170.0" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="348.2" y="192.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="367.0" y="197.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">s</text>
+<text x="382.9" y="192.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 34,000</text>
+<text x="748.6" y="192.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="767.3" y="197.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">d</text>
+<text x="768.6" y="192.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 38,800</text>
+<line x1="362.9" y1="106.0" x2="808.6" y2="106.0" stroke="#1d4ed8" stroke-width="2.4" marker-start="url(#f6-q52-gap-arws)" marker-end="url(#f6-q52-gap-arwe)"/>
+<text x="585.7" y="94.0" font-size="26.22" fill="#1d4ed8" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Imports = 4,800</text>
+<text x="244.0" y="238.0" font-size="27.599999999999998" fill="#d97706" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">With tariff:  P = $625</text>
+<line x1="469.6" y1="290.0" x2="803.9" y2="290.0" stroke="#d97706" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+<circle cx="469.6" cy="290.0" r="7" fill="#d97706"/>
+<circle cx="803.9" cy="290.0" r="7" fill="#d97706"/>
+<line x1="469.6" y1="290.0" x2="469.6" y2="320.0" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="803.9" y1="290.0" x2="803.9" y2="320.0" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="455.0" y="342.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="473.8" y="347.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">s</text>
+<text x="489.6" y="342.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 35,150</text>
+<text x="743.9" y="342.0" font-size="32.37479999999999" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Q</text><text x="762.7" y="347.2" font-size="16.9" fill="#0a2540" font-weight="600" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">d</text>
+<text x="763.9" y="342.0" font-size="23.459999999999997" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 38,750</text>
+<line x1="469.6" y1="256.0" x2="803.9" y2="256.0" stroke="#d97706" stroke-width="2.4" marker-start="url(#f6-q52-gap-arws)" marker-end="url(#f6-q52-gap-arwe)"/>
+<text x="636.8" y="244.0" font-size="26.22" fill="#d97706" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Imports = 3,600</text>
+<text x="40.0" y="430.0" font-size="24.839999999999996" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Reduction in imports = 1,200   →   DWL = ½ × $25 × 1,200 = $15,000</text>
+</svg>
+        <p class="figcap">A $25 tariff moves the domestic price from $600 to $625 and cuts imports from 4,800 to 3,600 handbags a year.</p></div>
+      <div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body">Target imports =
+            <span class="mono-sm">4,800 × 0.75 = <b>3,600</b></span>.</div></div>
+          <div class="step"><div class="num">2</div><div class="body">Find the domestic price that gives 3,600:
+            <span class="mono-sm">33,600 − 48P = 3,600</span></div></div>
+          <div class="step"><div class="num">3</div><div class="body">
+            <span class="mono-sm">48P = 30,000</span> → <span class="mono-sm">P = <b>$625</b></span></div></div>
+          <div class="step"><div class="num">4</div><div class="body">The tariff is the gap between the domestic
+            price consumers pay and the world price: <span class="mono-sm">t = 625 − 600</span></div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:24px">t = <b>$25 per handbag</b></div>
+        <p class="note-inline mt-s">At $625: <span class="mono-sm">Q<sub>d</sub> = 38,750</span>,
+          <span class="mono-sm">Q<sub>s</sub> = 35,150</span>, imports = <span class="mono-sm">3,600</span> ✓</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>45 s · Presenter C</b></p>
+  <p>Part (c) is the interesting one. The government wants imports cut by twenty-five per cent, so the target is four thousand eight hundred times zero point seven five — three thousand six hundred handbags. What domestic price delivers that? Put three thousand six hundred into the import function: that gives forty-eight P equals thirty thousand, so P is six hundred and twenty-five dollars. The tariff is the gap between the price consumers pay and the world price: six hundred and twenty-five minus six hundred. Twenty-five dollars a handbag. Notice the logic runs backwards — the government chooses the import target, and the tariff is whatever delivers it.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 15 · Q5.2 (d) revenue ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (d) tariff revenue">
+    <p class="kicker">Question 5.2 (d)</p>
+    <h2 class="h2">Tariff revenue</h2>
+    <div class="two mt-l" style="align-items:center">
+      <div>
+        <p class="note-inline">Tariff revenue is the tax per imported unit multiplied by the number of units still
+          imported — a rectangle, not a triangle.</p>
+        <div class="steps mt-m">
+          <div class="step"><div class="num">1</div><div class="body">Revenue =
+            <span class="mono-sm">t × (Q<sub>d</sub> − Q<sub>s</sub>)</span></div></div>
+          <div class="step"><div class="num">2</div><div class="body">
+            <span class="mono-sm">= $25 × 3,600</span></div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:26px">Tariff revenue = <b>$90,000 per year</b></div>
+      </div>
+      <div>
+        <div class="kpi" style="grid-template-columns:1fr 1fr">
+          <div class="card"><div class="k">tariff per unit</div><div class="v">$25</div></div>
+          <div class="card"><div class="k">imports after tariff</div><div class="v">3,600</div></div>
+        </div>
+        <div class="card mt-m">
+          <h4>Where the money goes</h4>
+          <p class="dim">The government collects the price gap <span class="mono-sm">$625 − $600</span> on each of
+            the 3,600 handbags that are still imported. This is the one gain that makes a tariff look attractive —
+            part (f) shows why it is not enough.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>20 s · Presenter C</b></p>
+  <p>Part (d): tariff revenue is the tariff per unit multiplied by the number of units still imported — a rectangle, not a triangle. Twenty-five dollars on each of three thousand six hundred handbags is ninety thousand dollars a year. This is the number the statement in part (f) will point to, so remember it.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 16 · Q5.2 (e) consumer surplus ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (e) consumer surplus">
+    <p class="kicker">Question 5.2 (e)</p>
+    <h2 class="h2">Consumer surplus under the tariff</h2>
+    <div class="two mt-s" style="align-items:start">
+      <div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div class="body">Quantity demanded at the post-tariff price
+            $625: <span class="mono-sm">Q<sub>d</sub> = −2(625) + 40,000 = <b>38,750</b></span></div></div>
+          <div class="step"><div class="num">2</div><div class="body">The demand curve hits the price axis where
+            <span class="mono-sm">Q<sub>d</sub> = 0</span>: <span class="mono-sm">P = 40,000 / 2 =
+            <b>$20,000</b></span> (the choke price).</div></div>
+          <div class="step"><div class="num">3</div><div class="body">Base = 38,750 handbags;
+            height = <span class="mono-sm">20,000 − 625 = $19,375</span></div></div>
+          <div class="step"><div class="num">4</div><div class="body">
+            <span class="mono-sm">CS = ½ × 38,750 × 19,375</span></div></div>
+        </div>
+        <div class="eq mt-m" style="font-size:23px">CS = <b>$375,390,625</b></div>
+      </div>
+      <div>
+        <div class="card">
+          <h4>For comparison</h4>
+          <table class="t mt-s">
+            <tr><th>Price consumers pay</th><th>Consumer surplus</th></tr>
+            <tr><td class="n">$600 (free trade)</td><td class="n">$376,360,000</td></tr>
+            <tr><td class="n">$625 (with tariff)</td><td class="n">$375,390,625</td></tr>
+            <tr><td><b>Loss to consumers</b></td><td class="n c-cs">−$969,375</td></tr>
+          </table>
+          <p class="note-inline mt-s">A $25 tariff costs consumers about <b>$969,375</b> — but the government
+            collects only $90,000 and producers gain $864,375. The rest, $15,000, is lost for good.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>45 s · Presenter C</b></p>
+  <p>Part (e), consumer surplus under the tariff. At six hundred and twenty-five dollars consumers buy thirty-eight thousand seven hundred and fifty handbags. The demand curve reaches the price axis where quantity demanded is zero — that is forty thousand divided by two, twenty thousand dollars. So the triangle is a half times thirty-eight thousand seven hundred and fifty times the height, twenty thousand minus six hundred and twenty-five. That gives three hundred and seventy-five million, three hundred and ninety thousand, six hundred and twenty-five dollars. Under free trade consumers had a million dollars more — the tariff costs them about nine hundred and sixty-nine thousand.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 17 · Q5.2 (f) evaluation ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.2 (f) is the tariff beneficial?">
+    <p class="kicker">Question 5.2 (f)</p>
+    <h2 class="h2">“A tariff is beneficial because the government receives revenue” — true or false?</h2>
+    <div class="two mt-m" style="align-items:start">
+      <div>
+        <h3 class="h3 c-dwl">False — for country A as a whole</h3>
+        <table class="t mt-s">
+          <tr><th>Group</th><th>Change in welfare</th></tr>
+          <tr><td class="c-cs">Consumers</td><td class="n">−$969,375</td></tr>
+          <tr><td class="c-ps">Domestic producers</td><td class="n">+$864,375</td></tr>
+          <tr><td class="c-gov">Government (tariff revenue)</td><td class="n">+$90,000</td></tr>
+          <tr><td><b>Country A, net</b></td><td class="n c-dwl">−$15,000</td></tr>
+        </table>
+        <p class="note-inline mt-s">The gains are real, but they are <b>transfers</b>: consumers lose more than
+          producers and the government together receive. The $15,000 nobody gets is the
+          <b>deadweight loss</b>.</p>
+      </div>
+      <div>
+        <div class="card">
+          <h4>DWL = the two triangles</h4>
+          <div class="eq mt-s" style="font-size:18px">DWL = ½ × t × Δimports</div>
+          <div class="eq mt-s" style="font-size:18px">= ½ × $25 × (4,800 − 3,600)</div>
+          <div class="eq mt-s" style="font-size:18px">= ½ × $25 × 1,200</div>
+          <div class="eq mt-s" style="font-size:20px">DWL = <b>$15,000</b></div>
+          <ul class="tight mt-m">
+            <li><b>Production distortion</b> (½ × 1,150 × 25 = $14,375): resources are pulled into handbag
+              production that could have been bought abroad more cheaply.</li>
+            <li><b>Consumption distortion</b> (½ × 50 × 25 = $625): some mutually beneficial trades no longer
+              happen.</li>
+          </ul>
+        </div>
+        <p class="note-inline mt-m">So the statement is true only for <b>specific groups</b> — the government and
+          domestic producers — and false for the <b>country as a whole</b>.</p>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.2 · Country A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>50 s · Presenter C</b></p>
+  <p>Part (f), and this is the reflective one. The statement says that imposing a tariff is beneficial for country A as a whole because the government receives tariff revenue. It is false — for the country as a whole. Look at the three groups. Consumers lose nine hundred and sixty-nine thousand dollars. Domestic producers gain eight hundred and sixty-four thousand. The government collects ninety thousand. Add those up and the country is down fifteen thousand dollars — and that is exactly the deadweight loss: a half times the twenty-five dollar tariff times the twelve hundred handbags of imports that disappeared. So the statement is true for specific groups, the government and domestic producers, but the gains are transfers. A transfer cannot make the total any bigger.</p>
+  <p><b>Handover:</b> Handover to [D] — the Q5.3 and Q5.4 presenter takes over here.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 18 · Q5.3 (a) ═══════════════════════════ -->
+  <section class="slide secopen" data-title="Part 4 · Question 5.3">
+    <span class="secnum">5.3</span>
+    <p class="kicker">Part 4 of 5 · Question 5.3</p>
+    <h2 class="h2">The generator market in Egypt</h2>
+    <div class="qcard">
+      <span class="qtag">Question 5.3</span>
+      <p class="qscenario">The electric generator market in Egypt is represented by the following equations:</p>
+      <p class="qeq"><span>Q<sub>d</sub> = 10,000 − 10P</span><span>Q<sub>s</sub> = 1,000 + 10P</span></p>
+      <div class="qparts">
+        <div class="qp"><b>a)</b><span>Suppose the current world price of electric generators is US$300. If the Egyptian government introduces a US$100 tariff on imported electric generators, what will be the price of an electric generator in Egypt? What will be the quantity of electric generators produced in Egypt and quantity imported into Egypt? What will the government’s tariff revenue be?</span></div>
+        <div class="qp"><b>b)</b><span>Who will gain and who will lose due to the above tariff? Calculate the changes in their surpluses. What will be the deadweight loss due to the tariff? Illustrate the situation with a diagram.</span></div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.3 · Egypt</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>25 s · Presenter D</b></p>
+  <p>I will finish with Questions 5.3 and 5.4. Question 5.3 is Egypt’s generator market: demand ten thousand minus ten P, supply one thousand plus ten P, a world price of three hundred US dollars and a tariff of one hundred. Part (a) is arithmetic; part (b) asks who gains and who loses, and for the deadweight loss, illustrated with a diagram.</p>
+</div>
+  </section>
+
+  <section class="slide" data-title="Q5.3 (a) Egypt">
+    <p class="kicker">Question 5.3 (a) · the electric generator market in Egypt</p>
+    <h2 class="h2">Price, output, imports and tariff revenue</h2>
+    <div class="grid g2 mt-s">
+      <div class="card">
+        <h4>Given</h4>
+        <div class="eq mt-s">Q<sub>d</sub> = 10,000 − 10P</div><br>
+        <div class="eq">Q<sub>s</sub> = 1,000 + 10P</div>
+        <p class="note-inline mt-s">World price <span class="mono-sm">P<sub>w</sub> = $300</span>;
+          tariff <span class="mono-sm">t = $100</span> per generator.</p>
+      </div>
+      <div class="card">
+        <h4>Steps</h4>
+        <div class="steps mt-s">
+          <div class="step"><div class="num">1</div><div class="body">Price in Egypt =
+            <span class="mono-sm">P<sub>w</sub> + t = 300 + 100</span> → <b>$400</b></div></div>
+          <div class="step"><div class="num">2</div><div class="body">Domestic production:
+            <span class="mono-sm">Q<sub>s</sub> = 1,000 + 10(400) = <b>5,000</b></span></div></div>
+          <div class="step"><div class="num">3</div><div class="body">Domestic demand:
+            <span class="mono-sm">Q<sub>d</sub> = 10,000 − 10(400) = <b>6,000</b></span></div></div>
+          <div class="step"><div class="num">4</div><div class="body">Imports =
+            <span class="mono-sm">6,000 − 5,000 = <b>1,000</b></span></div></div>
+          <div class="step"><div class="num">5</div><div class="body">Revenue =
+            <span class="mono-sm">$100 × 1,000 = <b>$100,000</b></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi four mt-m">
+      <div class="card"><div class="v">$400</div><div class="k">price with tariff</div></div>
+      <div class="card"><div class="v">5,000</div><div class="k">produced in Egypt</div></div>
+      <div class="card"><div class="v">1,000</div><div class="k">imported</div></div>
+      <div class="card" style="border-color:var(--gov)"><div class="v">$100,000</div><div class="k">tariff revenue</div></div>
+    </div>
+    <div class="slidefoot"><span>Question 5.3 · Egypt</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>35 s · Presenter D</b></p>
+  <p>Part (a). Once the tariff is in place, the price in Egypt is the world price plus the tariff: four hundred dollars. Domestic production at four hundred is one thousand plus ten times four hundred — five thousand generators. Domestic demand is ten thousand minus four thousand — six thousand. So imports are the difference: one thousand generators. Tariff revenue is a hundred dollars on each of them, one hundred thousand dollars. For comparison, under free trade Egypt imported three thousand — the tariff cut imports by two thirds.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 19 · Q5.3 (b) ═══════════════════════════ -->
+  <section class="slide" data-title="Q5.3 (b) gainers and losers">
+    <p class="kicker">Question 5.3 (b)</p>
+    <h2 class="h2">Who gains, who loses, and the deadweight loss</h2>
+    <div class="two fig-left mt-s">
+      <div class="figbox tight">
+        <span class="figtag">Fig. 9 · Q5.3(b): who gains and who loses</span><svg role="img" aria-label="f7-q53" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 710" width="1100" height="710" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs>
+  <pattern id="f7-q53-hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <rect width="9" height="9" fill="#dc2626" fill-opacity="0.10"/>
+    <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2.6" stroke-opacity="0.6"/>
+  </pattern>
+  <marker id="f7-q53-arws" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f7-q53-arwe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7b8ba0"/>
+  </marker>
+  <marker id="f7-q53-cs_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f7-q53-cs_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+  </marker>
+  <marker id="f7-q53-gv_a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M10,0 L0,5 L10,10 z" fill="#d97706"/>
+  </marker>
+  <marker id="f7-q53-gv_b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+  </marker>
+</defs>
+
+<line x1="180.0" y1="560.0" x2="920.0" y2="560.0" stroke="#0a2540" stroke-width="2"/>
+<line x1="180.0" y1="560.0" x2="180.0" y2="140.0" stroke="#0a2540" stroke-width="2"/>
+<text x="180.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >0</text>
+<line x1="328.0" y1="560.0" x2="328.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="328.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >2,000</text>
+<line x1="476.0" y1="560.0" x2="476.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="476.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >4,000</text>
+<line x1="624.0" y1="560.0" x2="624.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="624.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >6,000</text>
+<line x1="772.0" y1="560.0" x2="772.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="772.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >8,000</text>
+<line x1="920.0" y1="560.0" x2="920.0" y2="567.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="920.0" y="594.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="middle" >10,000</text>
+<line x1="180.0" y1="500.0" x2="173.0" y2="500.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="506.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >100</text>
+<line x1="180.0" y1="440.0" x2="173.0" y2="440.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="446.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >200</text>
+<line x1="180.0" y1="380.0" x2="173.0" y2="380.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="386.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >300</text>
+<line x1="180.0" y1="320.0" x2="173.0" y2="320.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="326.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >400</text>
+<line x1="180.0" y1="260.0" x2="173.0" y2="260.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="266.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >500</text>
+<line x1="180.0" y1="200.0" x2="173.0" y2="200.0" stroke="#0a2540" stroke-width="1.6"/>
+<text x="162.0" y="206.0" font-size="20.7" fill="#7b8ba0" font-weight="400" text-anchor="end" >600</text>
+<text x="550.0" y="636.0" font-size="26.22" fill="#0a2540" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Quantity of generators per year</text>
+<text x="106.0" y="350.0" font-size="19" fill="#0a2540" font-weight="600" text-anchor="middle" transform="rotate(-90 106.0 350.0)">Price (US$ per generator)</text>
+<polygon points="180.0,380.0 698.0,380.0 624.0,320.0 180.0,320.0" fill="#1d4ed8" fill-opacity="0.14" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="8 5"/>
+<polygon points="180.0,380.0 476.0,380.0 550.0,320.0 180.0,320.0" fill="#0e9f6e" fill-opacity="0.38" stroke="#0e9f6e" stroke-width="2" stroke-dasharray="8 5"/>
+<line x1="920.0" y1="560.0" x2="402.0" y2="140.0" stroke="#0a2540" stroke-width="3.4"/>
+<line x1="254.0" y1="560.0" x2="772.0" y2="140.0" stroke="#0a2540" stroke-width="3.4"/>
+<text x="394.6" y="146.0" font-size="28.979999999999997" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D</text>
+<text x="780.9" y="146.0" font-size="28.979999999999997" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">S</text>
+<line x1="180.0" y1="380.0" x2="949.6" y2="380.0" stroke="#0a2540" stroke-width="2.6"/>
+<text x="855.7" y="368.0" font-size="34.27919999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="872.1" y="373.5" font-size="17.9" fill="#0a2540" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">w</text><text x="883.2" y="368.0" font-size="34.27919999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> = 300</text>
+<line x1="180.0" y1="320.0" x2="949.6" y2="320.0" stroke="#0a2540" stroke-width="2.6" stroke-dasharray="10 5"/>
+<text x="804.0" y="308.0" font-size="34.27919999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">P</text><text x="820.4" y="313.5" font-size="17.9" fill="#0a2540" font-weight="700" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">w</text><text x="831.5" y="308.0" font-size="34.27919999999999" fill="#0a2540" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"> + t = 400</text>
+<polygon points="550.0,380.0 624.0,380.0 624.0,320.0 550.0,320.0" fill="#d97706" fill-opacity="0.65" stroke="#d97706" stroke-width="1.6"/>
+<polygon points="476.0,380.0 550.0,380.0 550.0,320.0" fill="url(#f7-q53-hatch)" stroke="#dc2626" stroke-width="1.8"/>
+<polygon points="624.0,380.0 624.0,320.0 698.0,380.0" fill="url(#f7-q53-hatch)" stroke="#dc2626" stroke-width="1.8"/>
+<text x="587.0" y="360.8" font-size="24.839999999999996" fill="#ffffff" font-weight="800" text-anchor="middle" >C</text>
+<line x1="594.4" y1="362.0" x2="705.4" y2="404.0" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="712.8" y="400.4" font-size="22.08" fill="#d97706" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">tariff revenue</text>
+<line x1="520.4" y1="350.0" x2="291.0" y2="278.0" stroke="#0e9f6e" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="246.6" y="274.4" font-size="22.08" fill="#0e9f6e" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">A  gain to producers</text>
+<line x1="461.2" y1="452.0" x2="372.4" y2="362.0" stroke="#1d4ed8" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="446.4" y="455.0" font-size="22.08" fill="#1d4ed8" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">B  loss to consumers</text>
+<line x1="505.6" y1="416.0" x2="514.5" y2="374.0" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="502.6" y="412.4" font-size="22.08" fill="#dc2626" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D  DWL</text>
+<line x1="672.1" y1="446.0" x2="662.5" y2="386.0" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="675.8" y="442.4" font-size="22.08" fill="#dc2626" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">D  DWL</text>
+<line x1="476.0" y1="560.0" x2="476.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.3" stroke-dasharray="5 4"/>
+<line x1="550.0" y1="560.0" x2="550.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.3" stroke-dasharray="5 4"/>
+<line x1="624.0" y1="560.0" x2="624.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.3" stroke-dasharray="5 4"/>
+<line x1="698.0" y1="560.0" x2="698.0" y2="380.0" stroke="#7b8ba0" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="476.0" y="548.0" font-size="20.7" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">4,000</text>
+<text x="550.0" y="548.0" font-size="20.7" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">5,000</text>
+<text x="624.0" y="548.0" font-size="20.7" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">6,000</text>
+<text x="698.0" y="548.0" font-size="20.7" fill="#7b8ba0" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">7,000</text>
+<rect x="60" y="631" width="30" height="18" fill="#1d4ed8" fill-opacity="0.5" stroke="#1d4ed8" stroke-width="1.6" rx="3"/><text x="100.0" y="646.0" font-size="22.08" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">loss to consumers (ΔCS)</text>
+<rect x="430" y="631" width="30" height="18" fill="#0e9f6e" fill-opacity="0.5" stroke="#0e9f6e" stroke-width="1.6" rx="3"/><text x="470.0" y="646.0" font-size="22.08" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">gain to producers (ΔPS)</text>
+<rect x="830" y="631" width="30" height="18" fill="#d97706" fill-opacity="0.5" stroke="#d97706" stroke-width="1.6" rx="3"/><text x="870.0" y="646.0" font-size="22.08" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">tariff revenue</text>
+<rect x="150" y="669" width="30" height="18" fill="#dc2626" fill-opacity="0.5" stroke="#dc2626" stroke-width="1.6" rx="3"/><text x="190.0" y="684.0" font-size="22.08" fill="#0a2540" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">deadweight loss (two triangles)</text>
+<text x="500.0" y="684.0" font-size="20.7" fill="#7b8ba0" font-weight="500" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">dashed outlines = change in surplus, not a new cost</text>
+</svg>
+        <p class="figcap">The tariff transfers income to producers (A) and the government (C); the two hatched triangles are the $100,000 deadweight loss.</p></div>
+      <div>
+        <table class="t">
+          <tr><th>Group</th><th>Change</th><th>Area</th></tr>
+          <tr><td class="c-ps">Domestic producers</td><td class="n">+$450,000</td><td>A</td></tr>
+          <tr><td class="c-gov">Egyptian government</td><td class="n">+$100,000</td><td>C</td></tr>
+          <tr><td class="c-cs">Consumers</td><td class="n">−$650,000</td><td>B</td></tr>
+          <tr><td class="c-dwl">Country as a whole</td><td class="n">−$100,000</td><td>D</td></tr>
+        </table>
+        <div class="steps mt-m">
+          <div class="step"><div class="num">1</div><div class="body"><span class="c-ps">ΔPS</span>:
+            <span class="mono-sm">½(4,000 + 5,000) × $100 = <b>$450,000</b></span></div></div>
+          <div class="step"><div class="num">2</div><div class="body"><span class="c-cs">ΔCS</span>:
+            <span class="mono-sm">−½(7,000 + 6,000) × $100 = <b>−$650,000</b></span></div></div>
+          <div class="step"><div class="num">3</div><div class="body"><span class="c-dwl">DWL</span>:
+            <span class="mono-sm">½ × 1,000 × $100 × 2 = <b>$100,000</b></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.3 · Egypt</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>50 s · Presenter D</b></p>
+  <p>Part (b) — who gains and who loses. Producers gain: their surplus is the trapezoid between three hundred and four hundred dollars along the supply curve, and it is worth four hundred and fifty thousand. The government gains a hundred thousand in tariff revenue. Consumers lose: their surplus falls by the trapezoid along the demand curve, six hundred and fifty thousand. The two pieces nobody receives are the hatched triangles — the production distortion and the consumption distortion — fifty thousand each. So the country as a whole is down one hundred thousand dollars: minus six hundred and fifty, plus four hundred and fifty, plus one hundred. The same conclusion as the handbags: protection moves income around, and destroys some of it.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 20 · Q5.4 article ═══════════════════════════ -->
+  <section class="slide secopen" data-title="Part 5 · Question 5.4">
+    <span class="secnum">5.4</span>
+    <p class="kicker">Part 5 of 5 · Question 5.4</p>
+    <h2 class="h2">A recent development in international trade</h2>
+    <div class="qcard">
+      <span class="qtag">Question 5.4</span>
+      <p class="qscenario">Select one newspaper or magazine article (no earlier than year 2021) about the recent development in international trade or globalization. Briefly introduce the article content. Then explain how the knowledge that you have learnt in Topic 5 can be applied in the selected article.</p>
+      <div class="qparts">
+        <div class="qp pre"><b></b><span>Our article: Blenkinsop, P. (2024) “EU slaps tariffs on Chinese EVs, risking Beijing backlash”, <i>Reuters</i>, 29 October 2024.</span></div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.4 · Article application</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>20 s · Presenter D</b></p>
+  <p>Question 5.4 asks us to choose one newspaper or magazine article from 2021 or later about a recent development in international trade, summarise it, and then apply Topic 5 to it. We chose Reuters’ coverage of the European Union’s tariffs on Chinese electric vehicles, published on the twenty-ninth of October 2024.</p>
+</div>
+  </section>
+
+  <section class="slide" data-title="Q5.4 – EU tariffs on Chinese EVs">
+    <p class="kicker">Question 5.4 · a recent development in international trade</p>
+    <h2 class="h2">The EU’s 2024 duties on Chinese electric vehicles</h2>
+    <div class="two fig-right mt-s" style="align-items:start">
+      <div>
+        <div class="card">
+          <h4>The article</h4>
+          <p style="font-size:19px">Blenkinsop, P. (2024) <i>“EU slaps tariffs on Chinese EVs, risking Beijing
+            backlash”</i>, Reuters, 29 October 2024.</p>
+          <p class="dim mt-s" style="font-size:23px">After a year-long anti-subsidy investigation, the EU imposed <b>definitive countervailing duties for five years</b>, on top of the standard 10% duty:</p>
+          <table class="t mt-s">
+            <tr><td>BYD</td><td class="n">17.0%</td><td>Tesla (Shanghai)</td><td class="n">7.8%</td></tr>
+            <tr><td>Geely</td><td class="n">18.8%</td><td>Other cooperating firms</td><td class="n">20.7%</td></tr>
+            <tr><td>SAIC</td><td class="n">35.3%</td><td>Total duty, some models</td><td class="n">up to 45.3%</td></tr>
+          </table>
+          <p class="note-inline mt-s">EU members were divided; Beijing opened its own probes into EU brandy, dairy and pork.</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="h3">Mapped to Topic 5</h3>
+        <table class="t mt-s">
+          <tr><th>Topic 5 concept</th><th>In the article</th></tr>
+          <tr><td>Barrier type</td><td>An <b>ad valorem tariff</b> — a % tax on imports</td></tr>
+          <tr><td class="c-cs">EU consumers</td><td>Pay more for cars → consumer surplus falls</td></tr>
+          <tr><td class="c-ps">EU producers</td><td>Protected from cheaper imports → producer surplus rises</td></tr>
+          <tr><td class="c-gov">EU budget</td><td>Collects the duty on every imported car (tariff revenue)</td></tr>
+          <tr><td class="c-dwl">Efficiency</td><td>Fewer cars imported → the two DWL triangles</td></tr>
+          <tr><td>Quota rent again</td><td>If a <b>minimum import price</b> replaces the duty, the price
+            gap goes to the <b>exporters</b> — the VER case in Unit 5</td></tr>
+          <tr><td>Comparative advantage</td><td>Production stays where costs are higher</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="slidefoot"><span>Question 5.4 · Article application</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>80 s · Presenter D</b></p>
+  <p>What happened: after a year-long anti-subsidy investigation, the EU imposed definitive countervailing duties for five years, on top of the standard ten per cent. The rate depends on the company — BYD seventeen per cent, Geely eighteen point eight, SAIC thirty-five point three, Tesla’s Shanghai plant seven point eight — so some models face forty-five per cent in total. EU members were divided, Beijing opened its own investigations into EU brandy, dairy and pork, and both sides kept negotiating a price undertaking instead. Now map it onto Topic 5. The barrier is an ad valorem tariff — a percentage tax on imports. EU consumers pay more, so their surplus falls. EU producers are protected from cheaper imports, so theirs rises. The EU budget collects the duty: tariff revenue. And fewer cars are imported, so the two deadweight-loss triangles appear. The price undertaking is the interesting line: if a minimum import price replaces the duty, the price gap stays with the Chinese exporters rather than the EU — that is the quota-rent case, exactly like a voluntary export restraint. And on comparative advantage: protection keeps production in a location where costs are higher.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 21 · conclusion ═══════════════════════════ -->
+  <section class="slide" data-title="Conclusion">
+    <p class="kicker">Conclusion</p>
+    <h2 class="h2">Three things to take away</h2>
+    <div class="grid g3 mt-l">
+      <div class="card card-accent"><h4>1 · Both barriers raise the price</h4>
+        <p class="dim">A tariff fixes the price gap (<span class="mono-sm">t</span>); a quota fixes the quantity and
+          lets the price rise to the level that clears the market with those imports.</p></div>
+      <div class="card card-accent"><h4>2 · Someone always gets the gap</h4>
+        <p class="dim"><span class="c-gov">Tariff → the government.</span>
+          <span class="c-gov">Quota → the licence holder (quota rent).</span>
+          If the rent goes abroad, the country is worse off still.</p></div>
+      <div class="card card-accent"><h4>3 · Producers win, consumers lose, the country loses</h4>
+        <p class="dim">The gains are transfers. What is not transferred — the two
+          <span class="c-dwl">DWL triangles</span> — is the net cost: $15,000 in Q5.2, $100,000 in Q5.3.</p></div>
+    </div>
+    <div class="mt-l" style="font-size:24px">
+      <b>Protection can help specific groups, but it does not make the country as a whole better off</b> — the
+      question is always <i>whose</i> surplus changes, and by how much.
+    </div>
+    <div class="slidefoot"><span>Conclusion</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>40 s · Presenter D</b></p>
+  <p>Three takeaways. First, both barriers raise the domestic price — a tariff fixes the price gap, a quota fixes the quantity and lets the price find its level. Second, someone always gets the gap: the government with a tariff, the licence holders with a quota — and if that rent goes abroad instead, the country is worse off still. And third: producers win, consumers lose, and the country as a whole loses by the two deadweight-loss triangles — fifteen thousand dollars in the handbag question, one hundred thousand in Egypt.</p>
+</div>
+  </section>
+
+  <!-- ═══════════════════════════ 22 · references + Q&A ═══════════════════════════ -->
+  <section class="slide" data-title="References and Q&A">
+    <p class="kicker">References · questions</p>
+    <h2 class="h2">References and Q&amp;A</h2>
+    <div class="two mt-l" style="align-items:start">
+      <div>
+        <h3 class="h3">Article (Q5.4)</h3>
+        <ul class="tight">
+          <li>Blenkinsop, P. (2024) “EU slaps tariffs on Chinese EVs, risking Beijing backlash”,
+            <i>Reuters</i>, 29 October 2024. reuters.com</li>
+        </ul>
+        <p class="note-inline mt-s">Supporting: European Commission (2024) <i>Commission Implementing Regulation
+          (EU) 2024/2754</i> and press release <i>IP/24/5589</i>, “EU imposes duties on unfairly subsidised
+          electric vehicles from China”, 29 October 2024.</p>
+        <h3 class="h3 mt-m">Data and figures</h3>
+        <ul class="tight">
+          <li>Country Z and country A data: tutorial question sheet, Q5.1 and Q5.2.</li>
+          <li>Egypt data: tutorial question sheet, Q5.3.</li>
+          <li>All diagrams redrawn from the assignment figure and Unit 5 (Figures 5.4 and 5.6) — same notation,
+            same colour code.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="h3">Course sources</h3>
+        <ul class="tight">
+          <li><i>AF3625 Topic 5 Lecture Slides</i> — free trade, tariffs, quotas, quota rent, winners and
+            losers.</li>
+          <li><i>AF3625 Topic 2 Lecture Slides</i> and <i>Unit 2</i> — consumer surplus, producer surplus,
+            social surplus.</li>
+          <li><i>AF3625 Topic 1 Lecture Slides</i> — demand, supply and equilibrium.</li>
+          <li><i>Unit 5 (with answers)</i> — worked tariff and quota figures, Figure 5.6 (<span
+            class="mono-sm">S′</span>).</li>
+        </ul>
+        <div class="card mt-m" style="border-left:4px solid var(--accent)">
+          <h4>Thank you — questions?</h4>
+          <p class="dim">Likely questions: why the quota rent is not government revenue · is a tariff ever good
+            for the country · what changes if the country is <i>large</i>?</p>
+        </div>
+      </div>
+    </div>
+    <div class="slidefoot"><span>References · Q&amp;A</span><span class="pg"></span></div>
+    <div class="notes">
+  <p><b>15 s · Presenter D</b></p>
+  <p>Our sources are on this slide: the Reuters article for Question 5.4, the tutorial question sheet, and Topic 5, Topic 2 and Unit 5 for the theory and the worked figures. Thank you — we are happy to take your questions.</p>
+</div>
+  </section>
+
+</div>
+<script>
+/* Page numbers are derived from slide order, so adding or moving a slide never
+   leaves a stale "n / 22" in a footer. */
+document.querySelectorAll('.slide').forEach(function (s, i, all) {
+  var pg = s.querySelector('.slidefoot .pg');
+  if (pg) pg.textContent = (i + 1) + ' / ' + all.length;
+});
+</script>
+<script src="../../../../.pi/agent/skills/html-ppt/assets/runtime.js"></script>
+</body></html>

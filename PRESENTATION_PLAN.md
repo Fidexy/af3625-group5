@@ -1,6 +1,14 @@
 # Presentation Plan — AF3625 Group 5 (Questions 5.1–5.4)
 
-> **Status:** planning only. No question has been solved in this file. Figures,
+> **Status:** the deck has been built and exported — **`slides/deck.pdf`** is the
+> deliverable (26 slides, 16:9, vector diagrams, embedded fonts), with `slides/index.html`
+> as the source and `slides/README.md` for the delivery/export commands and the full
+> answer table. Structure: cover + roadmap + a 2-slide concept primer, then a section
+> page for each question (Q5.1 slides 5–11, Q5.2 12–19, Q5.3 20–22, Q5.4 23–24),
+> conclusion and references. The planning notes below are kept as the brief they were
+> built from.
+
+> **Status (original):** planning only. No question has been solved in this file. Figures,
 > numbers and final wording are TODO items to complete during build.
 
 ---
@@ -228,8 +236,10 @@ This is the one place the assignment is designed to catch people.
    Week 10 Mon (2 Nov).
 3. **Q5.4 article choice** → needs an external 2021+ news/magazine source; pick
    something with clear tariff/quota/globalisation content.
-4. **Slide software/format** → rubric names "PowerPoint"; confirm `.pptx` and
-   classroom PC compatibility.
+4. **Slide software/format** → **resolved: an HTML deck exported to PDF, not `.pptx`**
+   (`slides/deck.pdf`, source `slides/index.html`). 26 landscape 16:9 pages with embedded
+   fonts and fully vector diagrams; no PowerPoint licence or font embedding needed. See
+   `slides/README.md`.
 5. **Responsibility for the written assignment** → 600–1,000 words, Q5.1–5.3
    only, cover page from the subject outline, Turnitin **and** email to tutor.
 6. **Confirm** next step: (a) solve Q5.1–5.3 with step-by-step workings,
